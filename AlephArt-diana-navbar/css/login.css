@@ -1,0 +1,65 @@
+
+/*Estilos navbar*/
+.navbar.navbar-dark {
+  background-color: #050831 !important;
+}
+
+.navbar-nav , .nav-item , .nav-link {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions .nav-link {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+#loggedOutItems {
+  display: inline-flex;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #ffffff;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-dark .navbar-brand {
+  color: #ffffff;
+}
+
+.user-actions .btn.nav-link {
+  padding: 0.25rem;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+      padding-top: 0.5rem;
+  }
+  
+  .user-actions {
+      margin-top: 0.5rem;
+  }
+
+  .navbar-nav.ms-auto.order-lg-last {
+    flex-direction: row;
+}
+#loggedOutItems, #loggedInItems {
+    flex-direction: column;
+}
+}
+/*Estilos navbar*/

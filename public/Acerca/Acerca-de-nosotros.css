@@ -1,0 +1,143 @@
+
+.lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+  }
+  
+  .poppins-regular {
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+  }
+
+h1{ 
+    font-size: 3rem;
+    color: #133072;
+}
+
+.subtitulo{
+    font-size: 1.25rem;
+    font-family: "Taviraj";
+    color: #133072;
+    text-align: center;
+}
+
+.card-body {
+    width: 400px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    justify-items: center;
+    align-items: center;
+}
+
+.img-fluid-rounded-start {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: auto;
+    max-width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+
+
+.image-fluid1{
+    max-width: 100%;
+    height: auto;
+}
+
+.col-lg-6{
+    text-align: justify;
+}
+  /*ajuste de cards del equipo */
+.card{
+max-height: 5200px;
+}
+
+.card:hover{ /*efecto sobreado y de escala al pulsar la tarjeta*/
+    scale: .95;
+    box-shadow: 0 0 20px #133072 ;
+    }
+
+.card-title{
+text-align: center;
+color:#133072;
+font-family: "Poppins";
+font-size: 1.25rem;
+}
+
+.card-body{
+ max-width: 100%;
+ margin: auto;
+}
+
+.card-text{
+    text-align: center;
+    color:#133072;
+}
+.card-description{
+    text-align: justify;
+    color:#133072;
+    font-family: "Poppins", serif;
+    font-size: 1rem;
+    padding: 15px;
+}
+
+/* photo id´s - centrar las fotos 
+#personal{
+    margin-top: 90px;
+}
+#personalastrid{
+    margin-top: 3px;
+}
+
+
+/*contenedor de la descripcion*/
+.col-md-8{
+    max-width: 100%;
+    align-items: center;
+}
+/*contenedor de la foto**/
+.col-md-4{
+padding: 20px;
+}
+
+
+/*boton*/
+.register{
+    padding: 10px 20px;
+  background-color: rgb(249, 0, 82);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+footer {
+    color: #050831;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 1rem;  
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+

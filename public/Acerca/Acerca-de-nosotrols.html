@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="Acerca-de-nosotros.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/inicio.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="icon" href="../assets/logosAlephArt/Logod5e6f7 (1).png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Lato:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Lato:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="Acerca-de-nosotros.css" rel="stylesheet">
+
+    <title>Acerca de Nosotras</title>
+</head>
+
+
+
+
+
+<body>
+<!--Navbar mediante JS
+   <div id="navbar"></div>
+<script>
+  // Realiza una solicitud para cargar el contenido de la navbar desde 
+  fetch('http://localhost:8000/public/html/navbar.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      // Crear un contenedor temporal para el HTML cargado
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = data;
+
+      // Definir rutas base para las dos carpetas de imágenes
+      const basePath1 = '/assets/iconos/';
+      const basePath2 = '/assets/logosAlephArt';
+
+      // Ajustar las rutas de las imágenes en el HTML cargado
+      const images = tempDiv.querySelectorAll('img');
+      images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src) {
+          if (src.startsWith('íconos/')) {
+            img.setAttribute('src', basePath1 + src.slice('iconos/'.length));
+          } else if (src.startsWith('Logos AlephArt/')) {
+            img.setAttribute('src', basePath2 + src.slice('logosAlephArt'.length));
+          } else if (!src.startsWith('http')) {
+            img.setAttribute('src', basePath1 + src); // Ruta predeterminada
+          }
+        }
+      });
+
+      // Mover las hojas de estilo internas al documento
+      const styleSheets = tempDiv.querySelectorAll('style');
+      styleSheets.forEach(style => {
+        document.head.appendChild(style.cloneNode(true));
+      });
+
+      // Incluir los enlaces a hojas de estilo externas en el documento
+      const links = tempDiv.querySelectorAll('link[rel="stylesheet"]');
+      links.forEach(link => {
+        const newLink = document.createElement('link');
+        newLink.rel = 'stylesheet';
+        newLink.href = link.href;
+        document.head.appendChild(newLink);
+      });
+
+      // Añadir el HTML ajustado al elemento con id "navbar"
+      document.getElementById('navbar').innerHTML = tempDiv.innerHTML;
+    })
+    .catch(error => {
+      console.error('Error al cargar:', error);
+    });
+</script>-->
+<!--Inicio de Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="/assets/LogosAlephArt/Logod5e6f7 (1).png"
+        width="35"
+        height="35"
+        alt="Logo Aleph Art"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto">
+        <a class="nav-item nav-link" href="../html/inicio.html">Inicio</a>
+        <a class="nav-item nav-link" href="./Acerca-de-nosotrols.html">Acerca de nosotras</a>
+        <a class="nav-item nav-link" href="../Contacto/contacto.html">Contacto</a>
+        <!-- Items que son visibles cuando el usuario inicio sesión -->
+        <div id="loggedInItems" style="display: none">
+          <a class="nav-item nav-link" href="./eventos.html">Eventos</a>
+          <a class="nav-item nav-link" href="./publicaciones.html"
+            >Publicaciones</a
+          >
+        </div>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <!-- Items que son visible cuando NO ha iniciado sesión-->
+        <div id="loggedOutItems">
+          <a class="nav-item nav-link active" href="./registro.html"
+            >Registro</a
+          >
+          <a class="nav-item nav-link" href="./login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <!-- Foto de perfil y botón de cerrar sesión -->
+    <div
+      class="navbar-nav ms-auto order-lg-last user-actions"
+      id="loggedInIcons"
+      style="display: none"
+    >
+      <a class="nav-link" href="./perfil.html" title="Profile">
+        <img
+          src="../assets/fotografa 1-perfil.png"
+          alt="Profile"
+          class="rounded-circle"
+          width="55"
+          height="55"
+        />
+      </a>
+      <button class="btn nav-link" title="Logout" id="exit-button">
+        <img
+          src="/assets/iconos/exit-white.png"
+          alt="Logout"
+          width="30"
+          height="30"
+        />
+      </button>
+    </div>
+  </div>
+</nav>
+<!--Fin de Navbar-->
+
+    
+
+
+
+
+
+<br><br>
+<br>  
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="lato-bold">Acerca de Aleph-Art</h1>
+            <br>
+            <p class="subtitulo">   Innovando la manera de compartir arte </p><br>
+            <p class="poppins-regular">Somos una plataforma innovadora y transformadora que promueve la difusión de artistas emergentes estableciendo un puente entre creadores y amantes del arte.   Comprometidos a ofrecer una plataforma  integral que permita a los usuarios descubrir y apoyar a artistas emergentes de diversas disciplinas, brindándoles una oportunidad única e innovadora para ganar visibilidad y reconocimiento.
+            </p><br>
+          </div>
+          <div class="col">
+            <img  class="img-fluid"  src="/recursosjpg/art-8826329_640.jpg">
+          </div>
+        </div>
+        <br><br>
+        <br><br>
+        <div class="row">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="/recursosjpg/paint-8808587_640.jpg" ><br>
+          </div>
+          <div class="col"><br>
+            <h1 class="lato-bold" >Nuestra Misión</h1>
+              <br>
+              <p class="subtitulo">   Descúbrete en un espacio seguro y conecta con artistas como tú.  </p>
+              <p class="poppins-regular"> Ser una plataforma inclusiva  y segura para compartir su arte, conectar con audiencias afines y colaborar en proyectos creativos, haciendo que el arte sea accesible para ser apreciado por todos. <br>
+             Nuestra plataforma está dirigida a artistas emergentes y underground que buscan conectar con un espacio para mostrar y desarrollar su talento, amantes del arte interesados en descubrir y disfrutar de nuevas expresiones artísticas, así como también para colaboradores y patrocinadores que buscan conectar con nuevas voces y talentos en el arte.</p>
+          </div>    
+        </div>
+      </div>
+      <br><br>
+      <br><br>
+
+    <h1 class="lato-bold">Conoce al Equipo</h1>
+    <br>
+    <br>
+<!-- Grid container -->
+    <div class="container">
+      <div class="row">
+          <!-- Primera columna -->
+          <div class="col-md-6">
+              <!-- CARD 1 -->
+              <div class="card mb-3">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                          <img src="/recursosjpg/equipo/valeria.jpeg" class="img-fluid rounded-start"  id="personal" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">Valeria López</h5>
+                              <p class="card-text"><small class="text-body-secondary">CDMX<br>
+                              Desarrolladora  Java FullStack. </small></p>
+                              <p class="card-description">Me llamo Valeria, soy desarrolladora Jr. Java Full Stack. Dentro de mis actividades favoritas se encuentran: ir a museos, leer y explorar lugares nuevos. <br>
+                                Disfruto de las diferentes formas de expresión artística, pues considero que siempre hay algo más profundo que invita a la reflexión y a la interpretación. </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- CARD 2 -->
+              <div class="card mb-3">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                          <img src="recursosjpg/equipo/damaris.jpg" class="img-fluid rounded-start" id="personal"  alt="...">
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">Damaris Ayala </h5>
+                              <p class="card-text"><small class="text-body-secondary">CDMX  <br>
+                                Desarrolladora  Java FullStack. </small></p>
+                              <p class="card-description"> Como desarrolladora FullStack, mis pasiones son enferntar contuniamente grandes desafíos que me permitan aprender, ya sea optimizando algoritmos o diseñando bases de datos, siempre orientada al detalle y el análisis exhaustivo. <br>
+                                ¡Me encanta formar parte de Apleh-Art y colaborar con otros, encontrar soluciones geniales y dar a conocer proyectos  de interés! </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+
+              <!-- CARD 3 -->
+              <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/recursosjpg/equipo/astrid.jpg" class="img-fluid rounded-start"  id="personalastrid"  alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Astrid Alcántar </h5>
+                            <p class="card-text"><small class="text-body-secondary">CDMX  <br>
+                                Desarrolladora  Java FullStack | Comunicóloga </small></p>
+                            <p class="card-description">
+                               Como equipo de Aleph-Art y apasionada del arte, he enfocado mis esfuerzos para generar un espacio donde la creatividad y la innovación se encuentran para crear algo verdaderamente mágico. <br>
+                               Me emociona ser parte de esta comunidad y contribuir con mis habilidades para fomentar la colaboración, el crecimiento y la inspiración mutua. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- CARD 4 -->
+            <div class="card mb-3">
+              <div class="row g-0">
+                  <div class="col-md-4">
+                      <img src="/recursosjpg/equipo/Karla.jpg" class="img-fluid rounded-start" id="personal"  alt="...">
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">Karla Moreno </h5>
+                          <p class="card-text"><small class="text-body-secondary">CDMX <br>
+                            Desarrolladora  Java FullStack.</small></p>
+                          <p class="card-description">Soy una chica multifacética que, además de haber estudiando una ciencia exacta, me apasiona el arte; por lo que en busca de crear una herramienta de impacto social en el ámbito cultural, contribuí con la validación en campo para el planteamiento general de este proyecto, así como el desarrollo y diseño de una parte del frontend </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+
+          <!-- Segunda columna -->
+          <div class="col-md-6">
+              <!-- CARD 5 -->
+              <div class="card mb-3">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                          <img src="/recursosjpg/equipo/zaira.jpeg" class="img-fluid rounded-start"  id="personal"alt="...">
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">Zaira Cortés</h5>
+                              <p class="card-text"><small class="text-body-secondary">CDMX <br>
+                                Desarrolladora  Java FullStack.</small></p>
+                              <p class="card-description"> Soy una profesional responsable con una pasión por la programación y la innovación. 
+                              <br> Formar parte de Aleph-Art me permite fusionar mis habilidades técnicas con mi amor por el arte, lo cual es muy significativo para mí, considerando este pryecto bajo contribuciones valiosas a la comunidad. </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- CARD 6 -->
+              <div class="card mb-3">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                          <img src="/recursosjpg/equipo/Mara.jpg" class="img-fluid rounded-start" id="personal" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">Mara Reynoso </h5>
+                              <p class="card-text"><small class="text-body-secondary">Guadalajara, Jal. <br>
+                                Desarrolladora  Java FullStack.</small></p>
+                              <p class="card-description"> Soy Mara Reynoso, Ingeniera, desarrolladora web y modista. Formo parte del equipo de Aleph-Art, poniendo parte de mis ideas creativas y mi trabajo multidisciplinario para desarrollar la página web. Estoy muy entusiasmada de ser parte de este proyecto y poner en práctica mis nuevos conocimientos. Disfruto el arte en todas sus expresiones.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- CARD 7 -->
+              <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/recursosjpg/equipo/mitzi.jpg" class="img-fluid rounded-start"  id="personal" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Mitzi Patiño</h5>
+                            <p class="card-text"><small class="text-body-secondary">CDMX <br> Desarrolladora Java FullStack | <br> Ing. Sistemas Computacionales </small></p>
+                            <p class="card-description">Disfruto mucho mi trabajo como programadora Fullstack y trabajar en este proyecto me ha ayudado e impulsado a reforzar mis conocimientos técnicos.
+                            <br> El formar parte de este equipo Aleph-Art me ha satisfacido demasiado porque he logrado unconstante aprendizaje de la mano de mis compañeras.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- CARD 8 -->
+             <div class="card mb-3">
+              <div class="row g-0">
+                  <div class="col-md-4">
+                      <img src="/recursosjpg/equipo/diana.jpg" class="img-fluid rounded-start"  id="personal" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">Diana Ampudia  </h5>
+                          <p class="card-text"><small class="text-body-secondary">EDOMEX <br> Desarrolladora Java FullStack</small></p>
+                          <p class="card-description">Desarrolladora web apasionada por el conocimiento y siempre en busca de nuevos desafíos. 
+                          <br> Mi insaciable curiosidad me llevó a descubrir un profundo amor por el aprendizaje, que he cultivado con entusiasmo durante años. Gracias a esto, he encontrado en el desarrollo web un espacio idóneo para canalizar mi curiosidad y creatividad.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- CARD 9 -->
+          <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/recursosjpg/equipo/taisGutierrez.jpg" id="personal" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Taís Gutiérrez</h5>
+                        <p class="card-text"><small class="text-body-secondary">Cuernavaca, Morelos.
+                           <br>
+                            Desarrolladora Java  FullStack | Ing. Mecatrónica 
+                            </small></p>
+                        <p class="card-description">
+                            Soy desarrolladora Java FullStack, siempre en busca siempre de soluciones eficientes que generen un impacto positivo para el crecimiento de mi equipo de trabajo. <br>
+                            Aleph-Art ha sido muy significativo, incrementado mis hardskills e implementándolas en un proyecto con una misión socialmente fuerte, creyendo en el interés de la juventud en el arte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+          </div>
+      </div>
+</div>
+  <br><br><br>
+    <div class="d-flex justify-content-center">
+     <button class="register">Regístrate</button> 
+     <br>
+     <br>
+    </div>
+
+    <footer class="footer">
+      <p> &copy; 2024 AlephArt</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+
