@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
 
 
 // Iniciar el servidor en el puerto 8000
-app.listen(8000, () => {
-    console.log('Servidor escuchando http://localhost:8000');
+app.listen(8080, () => {
+    console.log('Servidor escuchando http://localhost:8080');
 });
