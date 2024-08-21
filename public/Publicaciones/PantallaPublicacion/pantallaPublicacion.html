@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/Publicaciones/PantallaPublicacion/publicacion.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="../assets/logosAlephArt/Logod5e6f7 (1).png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+BE+VLG&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+
+    <!--Inicio de la Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img 
+              src="/public/assets/logosAlephArt/Logod5e6f7 (1).png"
+              width="35"
+              height="35"
+              alt="Logo Aleph Art"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto">
+              <a class="nav-item nav-link" href="../index.html">Inicio</a>
+              <a class="nav-item nav-link" href="../Acerca/Acerca-de-nosotrols.html">Acerca de nosotras</a>
+              <a class="nav-item nav-link" href="../Contacto/contacto.html">Contacto</a>
+              <!-- Items que son visibles cuando el usuario inicio sesión -->
+              <div id="loggedInItems" style="display: flex">
+                <a class="nav-item nav-link" href="../html/eventos.html">Eventos</a>
+                <a class="nav-item nav-link" href="../html/publicaciones.html"
+                  >Publicaciones</a
+                >
+              </div>
+            </div>
+            <div class="navbar-nav ms-auto">
+             <!-- Items que son visible cuando NO ha iniciado sesión-->
+              <div id="loggedOutItems" style="display: none;">
+                <a class="nav-item nav-link active" href="/public/html/registro.html"
+                  >Registro</a
+                >
+                <a class="nav-item nav-link" href="/public/html/login.html">Login</a>
+              </div>
+            </div>
+          </div>
+          <!-- Foto de perfil y botón de cerrar sesión -->
+          <div
+            class="navbar-nav ms-auto order-lg-last user-actions"
+            id="loggedInIcons"
+            style="display: flex"
+          >
+            <a class="nav-link" href="/public/html/perfil.html" title="Profile">
+              <img
+                src="/public/assets/fotografa 1-perfil.png"
+                alt="Profile"
+                class="rounded-circle"
+                width="55"
+                height="55"
+              />
+            </a>
+            <button class="btn nav-link" title="Logout" id="exit-button">
+              <img
+                src="/public/assets/iconos/exit-white.png"
+                alt="Logout"
+                width="30"
+                height="30"
+              />
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!--Fin de Navbar-->
+
+      <!--DIV PARA LA PUBLICACIÓN-->
+      <div id="publication-main-container"></div>
+
+      
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="/public/js/authStatus.js"></script> -->
+    <!-- <div class="publication-container">
+        <div class="publication-description">
+          <h3>Publication Title</h3>
+          <p>This is the description of the publication.</p>
+        </div>
+        <img src="publication-image.jpg" alt="Publication Image" class="publication-image">
+        <div class="publication-info">
+          <div class="username">User_1</div>
+          <div class="actions">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-trash"></i>
+          </div>
+        </div>
+        <div class="comments">
+          <div class="comment">
+            <img src="user-avatar.jpg" alt="User Avatar" class="comment-avatar">
+            <div class="comment-content">
+              <div class="comment-username">User_2</div>
+              <div class="comment-text">This is a comment on the publication.</div>
+            </div>
+          </div>
+          <div class="comment">
+            <img src="user-avatar-2.jpg" alt="User Avatar" class="comment-avatar">
+            <div class="comment-content">
+              <div class="comment-username">User_3</div>
+              <div class="comment-text">Another comment on the publication.</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <script src="./publication.js"></script>
+</body>
+</html>

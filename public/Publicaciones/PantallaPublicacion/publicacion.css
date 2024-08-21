@@ -1,0 +1,141 @@
+/*Estilos navbar*/
+.navbar.navbar-dark {
+  background-color: #050831 !important;
+}
+
+.navbar-nav,
+.nav-item,
+.nav-link {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions .nav-link {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+#loggedOutItems {
+  display: inline-flex;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #ffffff;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-dark .navbar-brand {
+  color: #ffffff;
+}
+
+.user-actions .btn.nav-link {
+  padding: 0.25rem;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    padding-top: 0.5rem;
+  }
+
+  .user-actions {
+    margin-top: 0.5rem;
+  }
+
+  .navbar-nav.ms-auto.order-lg-last {
+    flex-direction: row;
+  }
+  #loggedOutItems,
+  #loggedInItems {
+    flex-direction: column;
+  }
+}
+/*Estilos navbar*/
+
+/* Estilo publicación */
+
+#publication-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh; 
+}
+
+.publication-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh; 
+  }
+  
+  .publication-description {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    padding: 16px;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Esto permite que el elemento se centre tanto horizontal como verticalmente dentro de su contenedor*/
+    z-index: 1; /*Esto permite que el comentario este encima de la imagen*/
+    width: 80%;
+    text-align: center;
+  }
+  
+  .publication-image {
+    width: 50vw;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: block;
+    position: relative;
+  }
+
+  .comments {
+    margin-top: 16px;
+  }
+  
+  .comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    background-color: #86c2e0;
+    border-radius: 8px;
+  }
+  
+  .comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .comment-username {
+    font-weight: bold;
+  }
+  
+  .comment-text {
+    margin-top: 4px;
+  }
+  
+
