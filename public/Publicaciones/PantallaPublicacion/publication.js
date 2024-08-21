@@ -25,6 +25,7 @@ const publicationData = [
 
 // Función para crear el contenedor principal
 function createPublicationContainer(publication) {
+
   const container = document.createElement("div");
   container.classList.add("publication-container");
 
@@ -82,7 +83,17 @@ function createPublicationContainer(publication) {
   deleteImage.alt = "edit";
   deleteButton.appendChild(deleteImage);
 
-  buttonDiv.append(likeButton, shareButton, editButton, deleteButton);
+  // if para verificar si la publicación es del usuario o no y mostrar los botones adecuados
+  const currentUserUsername = "User_3"; //simulación, pero podemos usar un local storage más adelante para checar que usuario esta logeado
+
+  if (publication.username === currentUserUsername) {
+    buttonDiv.append(editButton, deleteButton);
+  } else {
+    editButton.style.display = "none";
+    deleteButton.style.display = "none";
+  }
+
+  buttonDiv.append(likeButton, shareButton);
 
   // Creamos la sección de comentarios
   const commentsDiv = document.createElement("div");
