@@ -1,7 +1,8 @@
 En Git:
 1. Estar dentro del repositorio clonado
-2. Iniciar el servidor node server.js
-3. Abrir  http://localhost:8000 y desde ahí se puede hacer la navegación entre páginas
+2. Realizar el pull
+3. Iniciar el servidor node server.js
+4. Abrir  http://localhost:8080 y desde ahí se puede hacer la navegación entre páginas
 
 ![image](https://github.com/user-attachments/assets/a188b2c1-6169-4617-be4a-628cf60776ca)
 
