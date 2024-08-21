@@ -62,6 +62,13 @@ function createPublicationContainer(publication) {
   likeImage.alt = "Like";
   likeButton.appendChild(likeImage);
 
+  const saveButton = document.createElement("button");
+  saveButton.classList.add("save-button");
+  const saveImage = document.createElement("img");
+  saveImage.src = "/public/assets/iconos/wishlist-star.png";
+  saveImage.alt = "Share";
+  saveButton.appendChild(saveImage);
+
   const shareButton = document.createElement("button");
   shareButton.classList.add("share-button");
   const shareImage = document.createElement("img");
@@ -83,8 +90,10 @@ function createPublicationContainer(publication) {
   deleteImage.alt = "edit";
   deleteButton.appendChild(deleteImage);
 
+  buttonDiv.append(likeButton, saveButton, shareButton);
+
   // if para verificar si la publicación es del usuario o no y mostrar los botones adecuados
-  const currentUserUsername = "User_3"; //simulación, pero podemos usar un local storage más adelante para checar que usuario esta logeado
+  const currentUserUsername = "User_1"; //simulación, pero podemos usar un local storage más adelante para checar que usuario esta logeado
 
   if (publication.username === currentUserUsername) {
     buttonDiv.append(editButton, deleteButton);
@@ -93,7 +102,6 @@ function createPublicationContainer(publication) {
     deleteButton.style.display = "none";
   }
 
-  buttonDiv.append(likeButton, shareButton);
 
   // Creamos la sección de comentarios
   const commentsDiv = document.createElement("div");
