@@ -3,20 +3,21 @@ const publicationData = [
   {
     id: 1,
     title: "Publicación 1",
-    description: "Esta es la descripción de la publicación 1.",
+    description:
+      "¡Hoy fue un día increíble en el Museo de Arte Moderno! 🎨✨ Pasé la mañana explorando exposiciones fascinantes y descubrí algunas obras que realmente me hicieron reflexionar. Desde las impresionantes esculturas abstractas hasta las coloridas pinturas contemporáneas, cada rincón del museo ofreció algo nuevo y emocionante.",
     username: "User_1",
     image: "/public/assets/ejemplos/27864905306_47b2f4895c_b.jpg",
     likes: 0,
     comments: [
       {
         username: "User_2",
-        image: "/public/assets/ejemplos/27864905306_47b2f4895c_b.jpg",
-        text: "This is a comment on Publication 1.",
+        image: "/public/assets/fotografa 1-perfil.png",
+        text: "¡Qué maravilla! 😍",
       },
       {
         username: "User_3",
         image: "/public/assets/ejemplos/27864905306_47b2f4895c_b.jpg",
-        text: "Another comment on Publication 1.",
+        text: "¡Qué envidia! La última vez que fui, la sección de pintura estaba cerrada por renovación. Gracias por compartir estas fotos, ¡se ven increíbles!",
       },
     ],
   },
@@ -36,9 +37,52 @@ function createPublicationContainer(publication) {
 
   // Creamos el elemento imagen
   const imageElement = document.createElement("img");
-  imageElement.src = publication.image; 
+  imageElement.src = publication.image;
   imageElement.alt = "Publication Image";
   imageElement.classList.add("publication-image");
+
+  // Creamos la sección de la publicación
+  const userInfo = document.createElement("div");
+  userInfo.classList.add("user-info");
+
+  // Creamos el elemento de nombre de usuario
+  const usernameElement = document.createElement("div");
+  usernameElement.classList.add("username");
+  usernameElement.textContent = publication.username;
+
+  // Creamos los botones
+  const buttonDiv = document.createElement("div");
+  buttonDiv.classList.add("button-group");
+
+  const likeButton = document.createElement("button");
+  likeButton.classList.add("like-button");
+  const likeImage = document.createElement("img");
+  likeImage.src = "/public/assets/iconos/sparkles.png";
+  likeImage.alt = "Like";
+  likeButton.appendChild(likeImage);
+
+  const shareButton = document.createElement("button");
+  shareButton.classList.add("share-button");
+  const shareImage = document.createElement("img");
+  shareImage.src = "/public/assets/iconos/share.png";
+  shareImage.alt = "Share";
+  shareButton.appendChild(shareImage);
+
+  const editButton = document.createElement("button");
+  editButton.classList.add("edit-button");
+  const editImage = document.createElement("img");
+  editImage.src = "/public/assets/iconos/pen-field.png";
+  editImage.alt = "edit";
+  editButton.appendChild(editImage);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-Button");
+  const deleteImage = document.createElement("img");
+  deleteImage.src = "/public/assets/iconos/trash.png";
+  deleteImage.alt = "edit";
+  deleteButton.appendChild(deleteImage);
+
+  buttonDiv.append(likeButton, shareButton, editButton, deleteButton);
 
   // Creamos la sección de comentarios
   const commentsDiv = document.createElement("div");
@@ -47,7 +91,7 @@ function createPublicationContainer(publication) {
     const commentDiv = document.createElement("div");
     commentDiv.classList.add("comment");
     const avatarElement = document.createElement("img");
-    avatarElement.src = publication.image;
+    avatarElement.src = comment.image;
     avatarElement.alt = "User Avatar";
     avatarElement.classList.add("comment-avatar");
     const commentContentDiv = document.createElement("div");
@@ -65,8 +109,34 @@ function createPublicationContainer(publication) {
     commentsDiv.appendChild(commentDiv);
   });
 
+  // Creamos la sección de agregar comentario del usuario
+  const commentSection = document.createElement("div");
+  commentSection.classList.add("comment-section");
+
+  // Creamos el elemento de entrada de texto para el comentario
+  const commentInput = document.createElement("textarea");
+  commentInput.classList.add("comment-input");
+  commentInput.placeholder = "Escribe un comentario...";
+
+  // Creamos el botón de enviar comentario
+  const commentButton = document.createElement("button");
+  commentButton.classList.add("comment-button");
+  commentButton.textContent = "Comentar";
+
+  // Agregamos los elementos de comentario al commentSection
+  commentSection.appendChild(commentInput);
+  commentSection.appendChild(commentButton);
+
   // Agregamos todos los elementos a nuestro div con append
-  container.append(descriptionDiv, imageElement,commentsDiv );
+  userInfo.appendChild(usernameElement);
+  userInfo.appendChild(buttonDiv);
+  container.append(
+    descriptionDiv,
+    imageElement,
+    userInfo,
+    commentsDiv,
+    commentSection
+  );
 
   return container;
 }
@@ -76,5 +146,9 @@ function getUserSelectedPublication() {
 }
 
 // Obtenemos el div publication-container y generamos el contenedor de la publicación que se debe mostrar
-const publicationContainer = document.getElementById("publication-main-container");
-publicationContainer.appendChild(createPublicationContainer(getUserSelectedPublication()));
+const publicationContainer = document.getElementById(
+  "publication-main-container"
+);
+publicationContainer.appendChild(
+  createPublicationContainer(getUserSelectedPublication())
+);
