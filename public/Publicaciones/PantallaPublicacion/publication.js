@@ -7,7 +7,7 @@ const publicationData = [
       "¡Hoy fue un día increíble en el Museo de Arte Moderno! 🎨✨ Pasé la mañana explorando exposiciones fascinantes y descubrí algunas obras que realmente me hicieron reflexionar. Desde las impresionantes esculturas abstractas hasta las coloridas pinturas contemporáneas, cada rincón del museo ofreció algo nuevo y emocionante.",
     username: "User_1",
     image: "/public/assets/ejemplos/27864905306_47b2f4895c_b.jpg",
-    likes: 0,
+    likes: 20,
     comments: [
       {
         username: "User_2",
@@ -25,7 +25,6 @@ const publicationData = [
 
 // Función para crear el contenedor principal
 function createPublicationContainer(publication) {
-
   const container = document.createElement("div");
   container.classList.add("publication-container");
 
@@ -62,6 +61,10 @@ function createPublicationContainer(publication) {
   likeImage.alt = "Like";
   likeButton.appendChild(likeImage);
 
+  const likeNumber = document.createElement("div");
+  likeNumber.classList.add("like-number");
+  likeNumber.textContent = `${publication.likes}`;
+
   const saveButton = document.createElement("button");
   saveButton.classList.add("save-button");
   const saveImage = document.createElement("img");
@@ -90,7 +93,24 @@ function createPublicationContainer(publication) {
   deleteImage.alt = "edit";
   deleteButton.appendChild(deleteImage);
 
-  buttonDiv.append(likeButton, saveButton, shareButton);
+  deleteButton.addEventListener("click", () => {
+    Swal.fire({
+      title: "¿Estás segur@?",
+      text: "¡Una vez que elimines tu publicación no podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('post eliminado')
+      }
+    });
+  });
+
+  buttonDiv.append(likeNumber, likeButton, saveButton, shareButton);
 
   // if para verificar si la publicación es del usuario o no y mostrar los botones adecuados
   const currentUserUsername = "User_1"; //simulación, pero podemos usar un local storage más adelante para checar que usuario esta logeado
@@ -101,7 +121,6 @@ function createPublicationContainer(publication) {
     editButton.style.display = "none";
     deleteButton.style.display = "none";
   }
-
 
   // Creamos la sección de comentarios
   const commentsDiv = document.createElement("div");
