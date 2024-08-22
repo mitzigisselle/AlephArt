@@ -8,6 +8,7 @@ const publicationData = [
     username: "User_1",
     image: "/public/assets/ejemplos/27864905306_47b2f4895c_b.jpg",
     likes: 20,
+    share: 5,
     comments: [
       {
         username: "User_2",
@@ -65,12 +66,6 @@ function createPublicationContainer(publication) {
   likeNumber.classList.add("like-number");
   likeNumber.textContent = `${publication.likes}`;
 
-  const saveButton = document.createElement("button");
-  saveButton.classList.add("save-button");
-  const saveImage = document.createElement("img");
-  saveImage.src = "/public/assets/iconos/wishlist-star.png";
-  saveImage.alt = "Share";
-  saveButton.appendChild(saveImage);
 
   const shareButton = document.createElement("button");
   shareButton.classList.add("share-button");
@@ -78,6 +73,10 @@ function createPublicationContainer(publication) {
   shareImage.src = "/public/assets/iconos/share.png";
   shareImage.alt = "Share";
   shareButton.appendChild(shareImage);
+
+  const shareNumber = document.createElement("div");
+  shareNumber .classList.add("share-number");
+  shareNumber .textContent = `${publication.share}`;
 
   const editButton = document.createElement("button");
   editButton.classList.add("edit-button");
@@ -110,7 +109,7 @@ function createPublicationContainer(publication) {
     });
   });
 
-  buttonDiv.append(likeNumber, likeButton, saveButton, shareButton);
+  buttonDiv.append(shareButton, shareNumber, likeButton,likeNumber);
 
   // if para verificar si la publicación es del usuario o no y mostrar los botones adecuados
   const currentUserUsername = "User_1"; //simulación, pero podemos usar un local storage más adelante para checar que usuario esta logeado

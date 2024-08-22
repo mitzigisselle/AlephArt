@@ -83,6 +83,7 @@ Folly: #F90052
   width: 100%;
   padding: 20px;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
 .publication-container {
@@ -97,6 +98,7 @@ Folly: #F90052
   align-items: center;
   width: 100%;
   max-width: 800px;
+  box-sizing: border-box;
 }
 
 .publication-description {
@@ -104,14 +106,17 @@ Folly: #F90052
   border: 1px solid #ccc; */ /*fondo blanco para la descripción*/
   /* margin-top: 1vh; */
   background-color: #D5E6F7; 
+  padding: 16px;
   color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .publication-description p {
-  margin-left: 15px;
+  margin: 0 0 10px 0;
 }
 
 .publication-image {
@@ -130,10 +135,13 @@ Folly: #F90052
   background-color: #D5E6F7;
   padding: 16px;
   width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .username {
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .button-group {
@@ -147,6 +155,7 @@ Folly: #F90052
   cursor: pointer;
   display: flex;
   align-items: center;
+  padding: 6px;
 }
 
 .button-group button:hover {
@@ -166,7 +175,7 @@ Folly: #F90052
 
 .comment {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 8px;
   background-color: #f0f3f4;
   border-radius: 8px;
@@ -180,13 +189,16 @@ Folly: #F90052
   margin-right: 8px;
 }
 
+.comment-content {
+  flex-grow: 1;
+}
+
 .comment-username {
   font-weight: bold;
 }
 
 .comment-text {
   margin-top: 4px;
-  padding-left: 8px;
 }
 
 /*Sección para agregar comentarios*/
@@ -219,3 +231,76 @@ Folly: #F90052
   background-color: #45a049;
 }
 
+@media screen and (max-width: 768px) {
+  .publication-container {
+    padding: 12px;
+  }
+
+  .user-info {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .username {
+    flex-shrink: 1; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 50%; 
+  }
+
+  .button-group {
+    flex-shrink: 0;
+  }
+
+  .button-group button {
+    padding: 5px; 
+  }
+
+  .button-group button img {
+    width: 22px; 
+    height: 22px;
+  }
+
+  .comment-section {
+    flex-direction: column;
+  }
+
+  .comment-input {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .comment-button {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #publication-main-container {
+    padding: 10px;
+  }
+
+  .publication-container {
+    padding: 8px;
+  }
+
+  .publication-description {
+    padding: 12px;
+  }
+
+  .user-info {
+    padding: 8px;
+  }
+
+  .button-group button {
+    padding: 4px;
+  }
+
+  .button-group button img {
+    width: 18px;
+    height: 18px;
+  }
+}
