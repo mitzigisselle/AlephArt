@@ -38,9 +38,12 @@
                 <div class="card cardEdit">
                     <div class="card-body barra-azul d-flex justify-content-between">
                         <div class="div-icons">
-                            <i class="fi fi-rs-customize-edit" id="iconAddText"></i> <!--ícono agregar texto-->
+                            <!-- <i class="fi fi-rs-customize-edit" id="iconAddText"></i> --ícono agregar texto-->
                             <i class="fi fi-rr-add-image" id="iconAddPicture"></i> <!--ícono agregar imagen-->
-                            <i class="fi fi-rr-photo-film-music" id="iconAddMedia"></i> <!--Agregar multimedia-->
+                            <input type="file" id="fileInput" multiple style="display: none;"> <!--Input para archivos oculto-->
+                            <!-- <i class="fi fi-rr-photo-film-music" id="iconAddMedia"></i> Agregar multimedia-->
+                            
+                            
                         </div>
                         <button type="button" class="btn btn-danger" id="button-publicar">Publicar</button>
                     </div>
@@ -53,6 +56,7 @@
 
 
 
+    <script src="../Formulario/formularioPublicaciones.js"></script>
 
 
     <!--Bootstrap-->    
