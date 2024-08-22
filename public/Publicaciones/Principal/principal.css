@@ -1,0 +1,146 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#card-container {
+  display: flex;
+  flex-direction: column; /* Disposición vertical */
+  gap: 20px; /* Espacio entre las tarjetas */
+  width: 100%;
+  max-width: 700px; /* Ancho máximo de la tarjeta */
+  margin: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 700px; /* Ancho máximo de la tarjeta */
+  height: auto; 
+  height: 450px;/* Altura automática para mantener la proporción */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative; /* Para permitir la colocación absoluta de los botones */
+  display: flex;
+  flex-direction: column; /* Alinea los elementos verticalmente */
+}
+
+.card-image {
+  width: 100%;
+  height: auto; /* Altura automática para mantener la proporción de la imagen */
+  max-height: 300px; /* Altura máxima de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionar */
+}
+
+.card-content {
+  padding: 16px;
+  flex-grow: 1; /* Ocupa el espacio restante */
+  overflow-y: auto; /* Permite desplazamiento si el contenido excede el espacio */
+  position: relative; /* Necesario para la colocación absoluta de los botones */
+  display: flex;
+  flex-direction: column;
+  background-color: #d5e6f7;
+  justify-content: space-between; /* Espacia el contenido verticalmente */
+}
+
+.card-title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.card-description {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.image-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre los botones */
+  position: absolute; /* Posiciona los botones en relación al contenedor padre */
+  top: 16px; /* Distancia desde el borde superior del contenido */
+  right: 16px; /* Distancia desde el borde derecho del contenido */
+}
+
+.image-button {
+  display: flex;
+  align-items: center; /* Alinea el icono y el texto verticalmente */
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  gap: 5px; /* Espacio entre el icono y el número */
+}
+
+.image-button img {
+  width: 20px; /* Tamaño de los botones de imagen en pantallas más pequeñas */
+  height: 20px;
+  border-radius: 5px; /* Opcional: borde redondeado para los botones */
+  transition: transform 0.3s;
+}
+
+.reaction-count {
+  font-size: 12px; /* Tamaño del texto en pantallas más pequeñas */
+  color: #333;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .card {
+      width: 100%; /* Ancho completo del contenedor en pantallas pequeñas */
+      height: auto; /* Altura automática */
+  }
+
+  .card-title {
+      font-size: 1.2em; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+
+  .card-description {
+      font-size: 14px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+
+  .image-buttons {
+      top: 8px; /* Ajusta la posición de los botones en pantallas pequeñas */
+      right: 8px;
+  }
+
+  .image-button img {
+      width: 30px; /* Tamaño más pequeño de los íconos en pantallas más pequeñas */
+      height: 30px;
+  }
+
+  .reaction-count {
+      font-size: 10px; /* Tamaño del texto más pequeño en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+      font-size: 1em; /* Tamaño de fuente aún más pequeño en pantallas muy pequeñas */
+  }
+
+  .card-description {
+      font-size: 12px; /* Tamaño de fuente aún más pequeño en pantallas muy pequeñas */
+  }
+
+  .image-buttons {
+      top: 4px; /* Ajusta la posición de los botones en pantallas muy pequeñas */
+      right: 4px;
+  }
+
+  .image-button img {
+      width: 25px; /* Tamaño aún más pequeño de los íconos en pantallas muy pequeñas */
+      height: 25px;
+  }
+
+  .reaction-count {
+      font-size: 8px; /* Tamaño del texto aún más pequeño en pantallas muy pequeñas */
+  }
+}
