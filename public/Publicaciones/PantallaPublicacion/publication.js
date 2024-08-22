@@ -169,9 +169,9 @@ function createPublicationContainer(publication) {
   userInfo.appendChild(usernameElement);
   userInfo.appendChild(buttonDiv);
   container.append(
-    descriptionDiv,
     imageElement,
     userInfo,
+    descriptionDiv,
     commentsDiv,
     commentSection
   );
