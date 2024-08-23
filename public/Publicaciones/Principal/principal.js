@@ -51,16 +51,16 @@ const cardContainer = document.getElementById('card-container');
 
 // Lista de imágenes, títulos y descripciones
 const images = [
-  '/public/assets/imgPublicaciones/1.jpg',
-  '/public/assets/imgPublicaciones/2.jpg',
-  '/public/assets/imgPublicaciones/3.jpg',
-  '/public/assets/imgPublicaciones/4.jpg',
-  '/public/assets/imgPublicaciones/5.jpg',
-  '/public/assets/imgPublicaciones/6.jpg',
-  '/public/assets/imgPublicaciones/7.jpg',
-  '/public/assets/imgPublicaciones/8.jpg',
-  '/public/assets/imgPublicaciones/9.jpg',
-  '/public/assets/imgPublicaciones/10.jpg'
+  '../../../assets/imgPublicaciones/1.jpg',
+  '../../../assets/imgPublicaciones/2.jpg',
+  '../../../assets/imgPublicaciones/3.jpg',
+  '../../../assets/imgPublicaciones/4.jpg',
+  '../../../assets/imgPublicaciones/5.jpg',
+  '../../../assets/imgPublicaciones/6.jpg',
+  '../../../assets/imgPublicaciones/7.jpg',
+  '../../../assets/imgPublicaciones/8.jpg',
+  '../../../assets/imgPublicaciones/9.jpg',
+  '../../../assets/imgPublicaciones/10.jpg'
 ];
 
 const titles = [
@@ -96,9 +96,9 @@ for (let i = 0; i < 10; i++) {
       titles[i], // Título específico para cada tarjeta
       descriptions[i], // Descripción específica para cada tarjeta
       [
-          { src: '/public/assets/iconos/meeting.png', reactions: 12 },
-          { src: '/public/assets/iconos/share.png', reactions: 7 },
-          { src: '/public/assets/iconos/sparkles.png', reactions: 25 }
+          { src: '../../assets/iconos/meeting.png', reactions: 12 },
+          { src: '../../assets/iconos/share.png', reactions: 7 },
+          { src: '../../assets/iconos/sparkles.png', reactions: 25 }
       ]
   );
   cardContainer.appendChild(newCard);
