@@ -88,7 +88,7 @@ function createPublicationContainer(publication) {
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-Button");
   const deleteImage = document.createElement("img");
-  deleteImage.src = "../../assets/iconos/trash.png";
+  deleteImage.src = "./../assets/iconos/trash.png";
   deleteImage.alt = "edit";
   deleteButton.appendChild(deleteImage);
 
