@@ -114,6 +114,11 @@ Folly: #F90052
   width: 100%;
   box-sizing: border-box;
 }
+.edit-description-textarea {
+  width: 100%; /* Ajusta el ancho al contenedor padre */
+  height: 150px; /* Ajusta la altura */
+  resize: both; /* Permite redimensionar el textarea tanto en ancho como en alto */
+}
 
 .publication-description p {
   margin: 0 0 10px 0;
@@ -226,10 +231,23 @@ Folly: #F90052
   border-radius: 4px;
   cursor: pointer;
 }
-
 .comment-button:hover {
   background-color: #45a049;
 }
+
+.save-button {
+  margin-left: 16px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.save-button:hover {
+  background-color: #45a049;
+}
+
 
 @media screen and (max-width: 768px) {
   .publication-container {

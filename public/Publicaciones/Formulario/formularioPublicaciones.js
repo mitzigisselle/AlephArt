@@ -1,7 +1,7 @@
 function crearPublicacion() {
     // Valores inputs
     const nombre = document.getElementById('nombreUsuario').value;
-    const contenido = document.getElementById('contenidoPublicacion').value;
+    const contenido = document.getElementById('formControl').value;
     const files = document.getElementById('fileInput').files;
 
     // Validación
@@ -15,7 +15,7 @@ function crearPublicacion() {
     publicacionDiv.classList.add('publicacion');
 
     // Añadir texto a nombre y contenido de la publicación
-    publicacionDiv.innerHTML = `<h3>Publicación de ${nombre}</h3><p>${contenido}</p>`;
+    //ublicacionDiv.innerHTML = `<h3>Publicación de ${nombre}</h3><p>${contenido}</p>`;
 
     // Procesar archivos seleccionados
     Array.from(files).forEach(file => {
@@ -44,11 +44,11 @@ function crearPublicacion() {
     });
 
     // Añadir la nueva publicación al contenedor de publicaciones
-    document.getElementById('publicaciones').appendChild(publicacionDiv);
+    document.getElementById('card-container').appendChild(publicacionDiv);
 
     // Limpiar inputs
     document.getElementById('nombreUsuario').value = '';
-    document.getElementById('contenidoPublicacion').value = '';
+    document.getElementById('formControl').value = '';
     document.getElementById('fileInput').value = ''; // Limpiar input de archivo
 }
 
