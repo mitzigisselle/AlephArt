@@ -7,13 +7,84 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+/*Estilos de formulario para crear publicaciones*/
+
+.container{
+  max-width: 700px;
+}
+
+
+#formControl{
+  border: 1px solid black;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px ;
+  font-family: Poppins,sans-serif;
+  max-width: 700px;
+}
+
+#label-textarea{
+  font-family: Poppins, sans-serif;
+}
+
+
+/*Barra azul*/
+.barra-azul{
+  background-color: #133072;
+  color: white;
+  font-family: Poppins, sans-serif;
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  position: relative;
+
+}
+
+/*Botón morado en barra azul*/
+.barra-azul button{
+  background-color: #D5ADFB;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  height: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: center;
+}
+
+.barra-azul button:hover{
+  background-color: #F90052;
+  }
+
+
+
+/*Íconos en barra azul*/
+.fi{
+  color:#D5ADFB;
+  font-size: 25px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.fi:hover {
+  color: #F90052; /* Color que deseas aplicar al pasar el cursor */
+}
+
+/*Terminan estilos de formulario para crear publicaciones*/
+
+/*Estilos cards*/
 #card-container {
   display: flex;
   flex-direction: column; /* Disposición vertical */
   gap: 20px; /* Espacio entre las tarjetas */
   width: 100%;
   max-width: 700px; /* Ancho máximo de la tarjeta */
-  margin: 20px;
+  margin: 0px;
 }
 
 .card {
