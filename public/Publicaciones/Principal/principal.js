@@ -54,10 +54,74 @@ function createCard(usuario, contenido, files = [], buttonImages = [], imageUrl 
       });
   }
 
+  
   // Botones en la misma línea que el nombre de usuario
   const imageButtons = document.createElement('div');
   imageButtons.classList.add('image-buttons');
 
+   const likeButton = document.createElement("button");
+   likeButton.classList.add("like-button");
+   const likeImage = document.createElement("img");
+   likeImage.src = "../../assets/iconos/sparkles.png";
+   likeImage.alt = "Like";
+   likeButton.appendChild(likeImage);
+ 
+   const likeNumber = document.createElement("div");
+   likeNumber.classList.add("like-number");
+   //likeNumber.textContent = `${publication.likes}`;
+ 
+   const shareButton = document.createElement("button");
+   shareButton.classList.add("share-button");
+   const shareImage = document.createElement("img");
+   shareImage.src = "../../assets/iconos/share.png";
+   shareImage.alt = "Share";
+   shareButton.appendChild(shareImage);
+ 
+   const shareNumber = document.createElement("div");
+   shareNumber.classList.add("share-number");
+   //shareNumber.textContent = `${publication.share}`;
+ 
+   const editButton = document.createElement("button");
+   editButton.classList.add("edit-button");
+   const editImage = document.createElement("img");
+   editImage.src = "../../assets/iconos/pen-field.png";
+   editImage.alt = "edit";
+   editButton.appendChild(editImage);
+ 
+   const deleteButton = document.createElement("button");
+   deleteButton.classList.add("delete-button");
+   const deleteImage = document.createElement("img");
+   deleteImage.src = "../../assets/iconos/trash.png";
+   deleteImage.alt = "delete";
+   deleteButton.appendChild(deleteImage);
+ 
+   deleteButton.addEventListener("click", () => {
+     Swal.fire({
+       title: "¿Estás segur@?",
+       text: "¡Una vez que elimines tu publicación no podrás revertir esto!",
+       icon: "warning",
+       showCancelButton: true,
+       cancelButtonText: "Cancelar",
+       confirmButtonColor: "#3085d6",
+       cancelButtonColor: "#d33",
+       confirmButtonText: "Eliminar",
+     }).then((result) => {
+       if (result.isConfirmed) {
+         // Eliminar la publicación
+         const index = publicationData.indexOf(publication);
+         if (index !== -1) {
+           publicationData.splice(index, 1);
+           savePublicationData(); // Actualiza el archivo JSON
+           container.remove(); // Elimina el contenedor del DOM
+         }
+       }
+     });
+   });
+
+   
+   imageButtons.append(shareButton, shareNumber, likeButton, likeNumber, editButton, deleteButton);
+
+/*
   buttonImages.forEach(({ src, reactions }) => {
       const button = document.createElement('button');
       button.classList.add('image-button');
@@ -73,6 +137,7 @@ function createCard(usuario, contenido, files = [], buttonImages = [], imageUrl 
       imageButtons.appendChild(button);
   });
 
+  */
   // Añadir elementos a la tarjeta
   cardUser.appendChild(usuarioElement);
   cardContent.appendChild(cardUser); // Añadir el usuario antes del contenido
@@ -92,6 +157,8 @@ function agregarNuevaPublicacion() {
       { src: '/public/assets/iconos/meeting.png', reactions: 12 },
       { src: '/public/assets/iconos/share.png', reactions: 7 },
       { src: '/public/assets/iconos/sparkles.png', reactions: 25 },
+      { src: '/public/assets/iconos/pen-field.png', reactions: 25 },
+      { src: '/public/assets/iconos/trash.png', reactions: 25 },
 
   ];
 
