@@ -135,9 +135,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* Espacio entre los botones */
-  position: absolute; /* Posiciona los botones en relación al contenedor padre */
-  top: 16px; /* Distancia desde el borde superior del contenido */
-  right: 16px; /* Distancia desde el borde derecho del contenido */
+  position: absolute; 
+  top: 25px; /*se le movio aqui*/
+  right: 30px; /*se le movio aqui*/
+  background-color: #ffffff;/*se le movio aqui*/
+  border-radius: 5px;
+  padding: 5px;
+  
 }
 
 .image-button {
@@ -148,6 +152,7 @@ body {
   padding: 0;
   cursor: pointer;
   gap: 5px; /* Espacio entre el icono y el número */
+  
 }
 
 .image-button img {

@@ -40,7 +40,7 @@ Array.from(files).forEach(file => {
     element = document.createElement('img');
     element.src = fileURL;
     element.alt = 'Imagen';
-    element.style.maxWidth = '200px';
+    element.style.maxWidth = '700px';
     element.classList.add('card-image');
   } else if (file.type.startsWith('audio/')) {
     element = document.createElement('audio');
@@ -73,6 +73,7 @@ function agregarNuevaPublicacion() {
   const contenido = document.getElementById('formControl').value;
   const files = document.getElementById('fileInput').files;
   const buttonImages = [
+    
     { src: '../../assets/iconos/meeting.png', reactions: 12 },
     { src: '../../assets/iconos/share.png', reactions: 7 },
     { src: '../../assets/iconos/sparkles.png', reactions: 25 }

@@ -28,7 +28,7 @@ function crearPublicacion() {
             element = document.createElement('img');
             element.src = fileURL;
             element.alt = `Imagen de publicación`;
-            element.style.maxWidth = '200px';
+            element.style.maxWidth = '700px';
         } else if (file.type.startsWith('audio/')) {
             element = document.createElement('audio');
             element.src = fileURL;
