@@ -60,6 +60,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
   imageButtons.classList.add('image-buttons');
 
   const likeButton = document.createElement("button");
+
   likeButton.classList.add("image-buttons");
   const likeImage = document.createElement("img");
   likeImage.src = "../../assets/iconos/sparkles.png";
@@ -70,24 +71,32 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
   likeNumber.classList.add("like-number");
 
   const shareButton = document.createElement("button");
+
   shareButton.classList.add("image-buttons");
+
   const shareImage = document.createElement("img");
   shareImage.src = "../../assets/iconos/share.png";
   shareImage.alt = "Share";
   shareButton.appendChild(shareImage);
 
   const shareNumber = document.createElement("div");
+
   shareNumber.classList.add("image-buttons");
 
   const editButton = document.createElement("button");
   editButton.classList.add("image-buttons");
+
+  editButton.classList.add("edit-button");
   const editImage = document.createElement("img");
   editImage.src = "../../assets/iconos/pen-field.png";
   editImage.alt = "edit";
   editButton.appendChild(editImage);
 
   const deleteButton = document.createElement("button");
+
   deleteButton.classList.add("image-buttons");
+
+  deleteButton.classList.add("delete-button");
   const deleteImage = document.createElement("img");
   deleteImage.src = "../../assets/iconos/trash.png";
   deleteImage.alt = "delete";

@@ -1,3 +1,6 @@
+**INSTRUCCIONES TAREA 9 Y TAREA 10**
+
+----------------------------------------------------------
 En Git:
 1. Estar dentro del repositorio clonado
 2. Realizar el pull

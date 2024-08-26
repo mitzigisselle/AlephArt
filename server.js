@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para la página principal 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/Eventos/html', 'eventos.html'));
+    res.sendFile(path.join(__dirname, 'public', 'principal.html'));
 });
 
 
