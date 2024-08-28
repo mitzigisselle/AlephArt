@@ -3,9 +3,9 @@ const publicationData = [
   {
     id: 1,
     title: "Publicación 1",
-    description: "¡Hoy fue un día increíble en el Museo de Arte Moderno! 🎨✨ Pasé la mañana explorando exposiciones fascinantes y descubrí algunas obras que realmente me hicieron reflexionar. Desde las impresionantes esculturas abstractas hasta las coloridas pinturas contemporáneas, cada rincón del museo ofreció algo nuevo y emocionante.",
+    description: "🎨✨ ¡Acabo de terminar esta obra y no podría estar más satisfecha con el resultado! Cada pincelada ha sido una expresión de mi pasión y dedicación, y ver el producto final me llena de orgullo.",
     username: "User_1",
-    image: "../../assets/ejemplos/27864905306_47b2f4895c_b.jpg",
+    image: "../../assets/imgPublicaciones/1.jpg",
     likes: 20,
     share: 5,
     comments: [
@@ -17,7 +17,7 @@ const publicationData = [
       {
         username: "User_3",
         image: "../../assets/ejemplos/27864905306_47b2f4895c_b.jpg",
-        text: "¡Qué envidia! La última vez que fui, la sección de pintura estaba cerrada por renovación. Gracias por compartir estas fotos, ¡se ven increíbles!",
+        text: "💖",
       },
     ],
   },
