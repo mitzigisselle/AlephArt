@@ -33,7 +33,11 @@
         font-weight: 600;
         font-style: normal;  
         color: #D5ADFB;
-    }    
+    } 
+    
+    .image-fluid {
+        height: px;
+    }
     
     #button1 {
         background-color:#F90052;
@@ -98,7 +102,7 @@
     }
     
     /*Event-cards styles*/
-    #event-container{
+    #event-container {
         display: flex; 
         flex-wrap: wrap;
         gap: 16px;
@@ -148,11 +152,15 @@
     .event-title {
         font-family: "Lato", sans-serif;
         font-weight: 700;
+        text-align: just;
         font-style: normal;
+        height: 50px;
         color: #133072;
+        margin-bottom: 50px;
     }
     
     .event-place {
+
         font-family: "Lato", sans-serif;
         font-weight: 700;
         font-style: normal;
@@ -165,13 +173,15 @@
         font-weight: 500;
         font-style: normal;
         font-size: small;
-        text-align: justify;
         color:#133072;
         flex-grow: 1;
-        overflow: hidden;
+        overflow-y:auto;
         text-overflow: ellipsis;
+        height: 80px;
     }
     
+    
+
     
     /*footer*/
     

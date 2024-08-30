@@ -53,7 +53,21 @@ function createEventCard(event) {
 
     // Añadir eventos a los botones de edición y eliminación
     card.querySelector('.edit-event-btn').addEventListener('click', () => editEvent(event.id));
-    card.querySelector('.delete-event-btn').addEventListener('click', () => deleteEvent(event.id));
+    card.querySelector('.delete-event-btn').addEventListener('click', () => Swal.fire({
+        title: "¿Estás segur@?",
+        text: "¡Una vez que elimines tu evento no podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          card.remove(); // Elimina la tarjeta del DOM
+          deleteEvent(index); // Elimina la publicación del almacenamiento
+        }
+      }));
 
     eventContainer.appendChild(card);
 }
@@ -80,11 +94,9 @@ function editEvent(eventId) {
     const events = JSON.parse(localStorage.getItem('eventos')) || [];
     const eventToEdit = events.find(event => event.id === eventId);
     
-    if (eventToEdit) {
-        // Aquí puedes abrir un formulario prellenado para editar el evento
-        // Luego de editar, guarda los cambios y actualiza localStorage
-    }
 }
+
+
 
 // Función para eliminar un evento
 function deleteEvent(eventId) {
