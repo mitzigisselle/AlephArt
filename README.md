@@ -1,9 +1,20 @@
-**INSTRUCCIONES TAREA 9 Y TAREA 10**
-<br>
-Dentro de la carpeta public 
-<br>
-*Se encuentra la carpeta **publicaciones** dentro de esta carpeta se encuentra la carpeta de **principal** y en el archivo **principal.html** se encuentra el codigo de la pagina
-<br>
-![captura1](https://github.com/user-attachments/assets/12827e3d-d5d8-4a64-9425-27a03e7b8bfd)
-![captura2](https://github.com/user-attachments/assets/6b599f1c-a058-491e-98e1-9000df345dfa)
-![captura3](https://github.com/user-attachments/assets/57d3c9c7-86aa-40b5-8428-512615e2d7bf)
+**TAREA 11 Y 12:**
+***Instrucciones para verificar la funcionalidad de la página.***
+- Realizar git pull de la rama main.
+- Ingresar a la carpeta */public*.
+- Dentro de la carpeta */public* escribir el comando **node server.js**
+  <br>
+![image](https://github.com/user-attachments/assets/4a65490b-f897-48d4-8ae6-6d019ce0e726)
+- Dirigirse a http://localhost:8080
+![image](https://github.com/user-attachments/assets/83bc95a5-9e35-4944-ad40-7a0f83def4b5)
+
+- Utilizar la navbar para dirigirse a las páginas deseadas.
+   - **Código página Registro: /public/Registro/registro.html**
+     <br>
+![image](https://github.com/user-attachments/assets/698a4bc8-8d73-4ff4-a50e-3b115ca683b5)
+  - **Código pagína Login: /public/Login/login.html**
+![image](https://github.com/user-attachments/assets/2e2baaaa-8e28-4ae8-ae1d-9bb5a6833291)
+
+
+
+

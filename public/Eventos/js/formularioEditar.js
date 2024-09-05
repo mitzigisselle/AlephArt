@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('descripcion').value = eventToEdit.descripcion;
 
             // Actualizar la imagen si es necesario
-            document.getElementById('portada').src = eventToEdit.image || '../resourses/audience-1867754_1280.jpg';
+            document.getElementById('portada').src = '/public/Eventos/assets/audience-1867754_1280.jpg' || eventToEdit.image ; //Se cambió el orden d ela condición para mostrar la imagen predeterminada
         }
     }
 

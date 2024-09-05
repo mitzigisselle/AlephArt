@@ -58,7 +58,7 @@ h3 {
 
 /*Estilos botón del formulario*/
 
-.btn-enviar{
+#btn-enviar{
   background-color:#F90052;
   border-color: #F90052;
 }
@@ -75,12 +75,6 @@ h3 {
 
 .preguntasFrecuentes{
   font-weight: bold;
-}
-
-
-footer {
-  text-align: center;
-  color: #133072;
 }
 
 /*Medias queries*/
@@ -137,5 +131,21 @@ footer {
     padding-right: 30px;
     padding-top: 7px;
     padding-bottom: 7px;
+}
+
+footer {
+  color: #050831;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 1rem;  
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
 }
 

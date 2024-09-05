@@ -1,0 +1,144 @@
+/*Estilos imagen del formulario*/
+.col-lg-5 {
+    padding: 0;
+    margin: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 120%;
+  }
+  
+  #imagen {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px; 
+  }
+
+  /*Estilos formulario*/
+.div-forms {
+  background-color: rgba(213, 173, 251, 0.2);/*color Mauve con opacidad 20%*/
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px; 
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+h1 {
+    color:#133072;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 3rem;
+    ;
+}
+
+.subtitulo {
+  text-align: center;
+  font-family: 'Taviraj', sans-serif;
+  font-size: 1.35rem;
+}
+
+.labels {
+  font-family: 'poppins', sans-serif;
+  font-size: 1rem;
+}
+
+.form-control{
+  font-family: 'poppins', sans-serif;
+  font-size: 1rem;
+}
+
+
+
+
+/*Estilos botón del formulario*/
+
+#btn-enviar { /*Se convirtió en id*/
+  background-color:#F90052;
+  border-color: #F90052;
+}
+
+.div-button{
+  text-align: center;
+}
+
+p{ 
+    text-align: center;
+  }
+
+.forgot{
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color:#F90052;
+    text-decoration: none;
+}
+
+/*Medias queries*/
+
+@media (max-width: 991px) {
+    .col-lg-5 {
+        border-radius: 7%;
+    }
+  
+    #imagen {
+        display: none; 
+    }
+}
+
+@media (max-width: 768px) {
+    .div-forms {
+        border-radius: 7%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    #imagen {
+        display: none; 
+    }
+}
+
+
+/* Personalización para alertas con SweetAlert2 */
+.my-custom-container {
+    font-family: 'Poppins', sans-serif; 
+    background-color: #D5E6F7; 
+
+}
+
+.my-custom-title {
+    color: #133072; /* Color del título */
+    font-size: 1.5rem; /* Tamaño del título */
+}
+
+.my-custom-content {
+    color: #050831; 
+    font-size: 1rem; 
+}
+
+.my-custom-confirm-button {
+    background-color: #F90052; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border-radius: 10%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+footer {
+  color: #050831;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 1rem;  
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}

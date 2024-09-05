@@ -131,11 +131,38 @@ section {
   justify-content: space-between; /* Alinea el nombre del usuario a la izquierda y los botones a la derecha */
   align-items: center; /* Alinea verticalmente el contenido */
 }
+/*Estilos de publicaciones*/
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-user {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #050831; /* Usando el color Oxford blue */
+}
+
+.card-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.image-buttons {
+  background: none;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
 
 .card-description {
   color: #555;
   font-size: 1rem;
   margin-top: 5px;
+  font-family: "Poppins", sans-serif;
 }
 
 .image-buttons {
@@ -166,7 +193,20 @@ section {
   font-size: 12px; /* Tamaño del texto en pantallas más pequeñas */
   color: #333;
 }
-
+.edit-textarea{
+  width: 100%; /* Ajusta el ancho al contenedor padre */
+  height: 150px; /* Ajusta la altura */
+  resize: both; /* Permite redimensionar el textarea tanto en ancho como en alto */
+}
+.save-button{
+  margin-left: 16px;
+  padding: 8px 16px;
+  background-color: #F90052;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 768px) {
   .card {

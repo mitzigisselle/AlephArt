@@ -1,141 +1,78 @@
 // Función para crear una tarjeta
-function createCard(usuario, contenido, files = [], imageUrl = '', index) {
+function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaCreacion = '') {
   const card = document.createElement('div');
   card.classList.add('card');
-  card.dataset.index = index; // Asignar el índice de la publicación
+  card.dataset.index = index;
 
-  // Nombre del usuario
-  const cardUser = document.createElement('div');
-  cardUser.classList.add('card-title');
+  let fileElements = '';
 
-  const usuarioElement = document.createElement('span');
-  usuarioElement.textContent = usuario;
+  Array.from(files).forEach(file => {
+    const fileURL = typeof file === 'string' ? file : URL.createObjectURL(file);
+    console.log('fileURL:', fileURL); // Verificar la URL del archivo
+    if (file.type?.startsWith('image/') || fileURL.startsWith('blob:')) {
+      fileElements += `<img src="${fileURL}" alt="Imagen" class="card-image">`;
+    } else if (file.type?.startsWith('audio/')) {
+      fileElements += `<audio src="${fileURL}" alt="audio" controls class="card-image"></audio>`;
+    } else if (file.type?.startsWith('video/')) {
+      fileElements += `<video src="${fileURL}" controls class="card-image"></video>`;
+    }
+  });
 
-  // Contenido de la tarjeta
-  const cardContent = document.createElement('div');
-  cardContent.classList.add('card-content');
+  card.innerHTML = `
+    <div class="card-media">
+      ${imageUrl ? `<img src="${imageUrl}" alt="Imagen" class="card-image">` : fileElements}
+    </div>
+    <div class="card-content">
+      <div class="card-title">
+        <span class="card-username">${usuario}</span>
+        <div class="card-buttons">
+          <button class="image-buttons edit-button">
+            <img src="../../assets/iconos/pen-field.png" alt="edit">
+          </button>
+          <button class="image-buttons delete-button">
+            <img src="../../assets/iconos/trash.png" alt="delete">
+          </button>
+          <button class="image-buttons">
+            <img src="../../assets/iconos/sparkles.png" alt="Like">
+          </button>
+          <div class="like-number"></div>
+          <button class="image-buttons">
+            <img src="../../assets/iconos/share.png" alt="Share">
+          </button>
+        </div>
+      </div>
+      <div class="card-date">${fechaCreacion}</div> 
+      <p class="card-description">${contenido}</p>
+      <div class="edit-form" style="display: none;">
+        <textarea class="edit-textarea">${contenido}</textarea>
+        <button class="save-button">Guardar</button>
+      </div>
+    </div>
+  `;
+  // Obtener los elementos que necesitan eventos
+  const editButton = card.querySelector('.edit-button');
+  const deleteButton = card.querySelector('.delete-button');
+  const editForm = card.querySelector('.edit-form');
+  const saveButton = card.querySelector('.save-button');
+  const cardDescription = card.querySelector('.card-description');
+  const editTextarea = card.querySelector('.edit-textarea');
 
-  // Descripción de la tarjeta
-  const cardDescription = document.createElement('p');
-  cardDescription.classList.add('card-description');
-  cardDescription.textContent = contenido;
+  // Eventos de edición
+  editButton.addEventListener('click', () => {
+    editForm.style.display = editForm.style.display === 'none' ? 'block' : 'none';
+  });
 
-  // Procesar archivos seleccionados o URL de la imagen
-  if (imageUrl) {
-    const cardImage = document.createElement('img');
-    cardImage.src = imageUrl;
-    cardImage.alt = 'Imagen';
-    cardImage.classList.add('card-image');
-    card.appendChild(cardImage);
-  } else {
-    Array.from(files).forEach(file => {
-      const fileURL = URL.createObjectURL(file);
-      let element;
-
-      if (file.type.startsWith('image/')) {
-        element = document.createElement('img');
-        element.src = fileURL;
-        element.alt = 'Imagen';
-        element.classList.add('card-image');
-      } else if (file.type.startsWith('audio/')) {
-        element = document.createElement('audio');
-        element.src = fileURL;
-        element.controls = true;
-        element.classList.add('card-image');
-      } else if (file.type.startsWith('video/')) {
-        element = document.createElement('video');
-        element.src = fileURL;
-        element.controls = true;
-        element.classList.add('card-image');
-      }
-
-      if (element) {
-        card.appendChild(element);
-      }
-    });
-  }
-
-  // Botones en la misma línea que el nombre de usuario
-  const imageButtons = document.createElement('div');
-  imageButtons.classList.add('image-buttons');
-
-  const likeButton = document.createElement("button");
-
-  likeButton.classList.add("image-buttons");
-  const likeImage = document.createElement("img");
-  likeImage.src = "../../assets/iconos/sparkles.png";
-  likeImage.alt = "Like";
-  likeButton.appendChild(likeImage);
-
-  const likeNumber = document.createElement("div");
-  likeNumber.classList.add("like-number");
-
-  const shareButton = document.createElement("button");
-
-  shareButton.classList.add("image-buttons");
-
-  const shareImage = document.createElement("img");
-  shareImage.src = "../../assets/iconos/share.png";
-  shareImage.alt = "Share";
-  shareButton.appendChild(shareImage);
-
-  const shareNumber = document.createElement("div");
-
-  shareNumber.classList.add("image-buttons");
-
-  const editButton = document.createElement("button");
-  editButton.classList.add("image-buttons");
-
-  editButton.classList.add("edit-button");
-  const editImage = document.createElement("img");
-  editImage.src = "../../assets/iconos/pen-field.png";
-  editImage.alt = "edit";
-  editButton.appendChild(editImage);
-
-  const deleteButton = document.createElement("button");
-
-  deleteButton.classList.add("image-buttons");
-
-  deleteButton.classList.add("delete-button");
-  const deleteImage = document.createElement("img");
-  deleteImage.src = "../../assets/iconos/trash.png";
-  deleteImage.alt = "delete";
-  deleteButton.appendChild(deleteImage);
-
-  // Editar
-  const editForm = document.createElement('div');
-  editForm.classList.add('edit-form');
-  editForm.style.display = 'none'; // Inicialmente oculto
-
-  const editTextarea = document.createElement('textarea');
-  editTextarea.value = contenido;
-  editTextarea.classList.add('edit-textarea');
-
-  const saveButton = document.createElement('button');
-  saveButton.textContent = 'Guardar';
-  saveButton.classList.add('save-button');
-  //Guardar cambios
   saveButton.addEventListener('click', () => {
     const newContent = editTextarea.value;
     if (newContent.trim() !== '') {
       cardDescription.textContent = newContent;
       updatePublicationData(index, { description: newContent });
-      editForm.style.display = 'none'; // Ocultar formulario después de guardar
-    } 
-  });
-
-  editForm.appendChild(editTextarea);
-  editForm.appendChild(saveButton);
-
-  editButton.addEventListener('click', () => {
-    if (editForm.style.display === 'none') {
-      editForm.style.display = 'block'; // Mostrar formulario
-    } else {
-      editForm.style.display = 'none'; // Ocultar formulario si ya está visible
+      editForm.style.display = 'none';
     }
   });
 
-  deleteButton.addEventListener("click", () => {
+  // Evento de eliminación
+  deleteButton.addEventListener('click', () => {
     Swal.fire({
       title: "¿Estás segur@?",
       text: "¡Una vez que elimines tu publicación no podrás revertir esto!",
@@ -147,40 +84,30 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
       confirmButtonText: "Eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
-        card.remove(); // Elimina la tarjeta del DOM
-        deletePublicationData(index); // Elimina la publicación del almacenamiento
+        card.remove(); //Eliminar la card
+        deletePublicationData(index); //Eliminar del JSON
       }
     });
   });
-
-  imageButtons.append(shareButton, shareNumber, likeButton, likeNumber, editButton, deleteButton);
-  cardContent.appendChild(editForm); // Añadir formulario al contenido
-
-  // Añadir elementos a la tarjeta
-  cardUser.appendChild(usuarioElement);
-  cardContent.appendChild(cardUser); // Añadir el usuario antes del contenido
-  cardContent.appendChild(cardDescription);
-  cardUser.appendChild(imageButtons);
-  card.appendChild(cardContent);
 
   return card;
 }
 
 // Actualizar los datos de la publicación en el localStorage
 function updatePublicationData(index, updatedData) {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
-  if (index >= 0 && index < items.length) {
-    items[index] = { ...items[index], ...updatedData };
-    localStorage.setItem("items", JSON.stringify(items));
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
+  if (index >= 0 && index < publicaciones.length) {
+    publicaciones[index] = { ...publicaciones[index], ...updatedData };
+    localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
   }
 }
 
 // Eliminar la publicación del localStorage
 function deletePublicationData(index) {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
-  if (index >= 0 && index < items.length) {
-    items.splice(index, 1);
-    localStorage.setItem("items", JSON.stringify(items));
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
+  if (index >= 0 && index < publicaciones.length) {
+    publicaciones.splice(index, 1);
+    localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
   }
 }
 
@@ -189,38 +116,32 @@ function agregarNuevaPublicacion() {
   const usuario = "Usuario 1";
   const contenido = document.getElementById('formControl').value;
   const files = document.getElementById('fileInput').files;
-<<<<<<< HEAD
-  
-=======
-<<<<<<< HEAD
-  const buttonImages = [
-      { src: '/public/assets/iconos/meeting.png', reactions: 12 },
-      { src: '/public/assets/iconos/share.png', reactions: 7 },
-      { src: '/public/assets/iconos/sparkles.png', reactions: 25 },
-
-  ];
-=======
-  
->>>>>>> 340ce3dedbf66b38f1dd98f7f7d8b86da84b7aa1
->>>>>>> e5a13bef08d6b34b86ee759b03cf94fb46642a32
 
   if (contenido.trim() === '') {
-      alert('Por favor, ingresa algo para compartir.');
-      return;
+    alert('Por favor, ingresa algo para compartir.');
+    return;
   }
 
-  const items = JSON.parse(localStorage.getItem("items")) || []; //Recupera los items en el localStorage, JSON -> array, array vacío
-  const newItem = {  //Se crea un objeto
-      name: usuario,
-      img: files.length > 0 ? URL.createObjectURL(files[0]) : '', //Se crea una URL temporal
-      description: contenido
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
+
+  // Crear una lista de URLs para los archivos
+  const fileURLs = Array.from(files).map(file => URL.createObjectURL(file));
+
+  const fechaCreacion = new Date().toLocaleString(); // Captura la fecha y hora actual
+
+  const nuevaPublicacion = {
+    name: usuario,
+    description: contenido,
+    files: fileURLs,
+    date: fechaCreacion // Guarda la fecha en el objeto
   };
-  items.push(newItem);
-  localStorage.setItem("items", JSON.stringify(items)); //Convierte array -> JSON
+
+  publicaciones.push(nuevaPublicacion);
+  localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
 
   // Crear la nueva tarjeta
-  const nuevaCard = createCard(usuario, contenido, files, files.length > 0 ? URL.createObjectURL(files[0]) : '', items.length - 1);
-  document.getElementById('card-container').appendChild(nuevaCard);
+  const card = createCard(usuario, contenido, files, '', publicaciones.length - 1, fechaCreacion);
+  document.getElementById('card-container').appendChild(card);
 
   // Limpiar inputs
   document.getElementById('formControl').value = '';
@@ -231,23 +152,15 @@ function agregarNuevaPublicacion() {
 
 // Función para cargar las publicaciones desde el localStorage
 function loadItemsFromLocalStorage() {
-  const storageItems = localStorage.getItem("items"); //Obtiene JSON
-  if (storageItems) { //Si se recupera los objetos
-      const items = JSON.parse(storageItems); //JSON -> array
-      items.forEach((item, index) => { //Se itera sobre cada item (objeto, posición)
-          const card = createCard(item.name, item.description, [], [], item.img, index);
-          document.getElementById('card-container').appendChild(card); //Agrega la card al contenedor
-      });
+  const storageItems = localStorage.getItem("publicaciones");
+  if (storageItems) {
+    const publicaciones = JSON.parse(storageItems);
+    publicaciones.forEach((publicacion, index) => {
+      const card = createCard(publicacion.name, publicacion.description, publicacion.files, '', index, publicacion.date);
+      document.getElementById('card-container').appendChild(card);
+    });
   }
 }
-
-// Vincular la función al botón "Publicar"
-document.getElementById('button-publicar').addEventListener('click', agregarNuevaPublicacion);
-
-// Vincular el ícono de multimedia con el input de archivo
-document.getElementById('iconAddPicture').addEventListener('click', function() {
-  document.getElementById('fileInput').click();
-});
 
 // Función para mostrar previsualización de archivos seleccionados
 function handleFilePreview(event) {
@@ -259,45 +172,42 @@ function handleFilePreview(event) {
   previewContainer.innerHTML = '';
 
   Array.from(files).forEach(file => {
-      const fileURL = URL.createObjectURL(file);
-      let element;
+    const fileURL = URL.createObjectURL(file);
+    let element;
 
-      if (file.type.startsWith('image/')) {
-          element = document.createElement('img');
-          element.src = fileURL;
-          element.alt = 'Imagen';
-          element.style.maxWidth = '200px';
-          element.classList.add('img-preview');
-      } else if (file.type.startsWith('audio/')) {
-          element = document.createElement('audio');
-          element.src = fileURL;
-          element.controls = true;
-          element.classList.add('audio-preview');
-      } else if (file.type.startsWith('video/')) {
-          element = document.createElement('video');
-          element.src = fileURL;
-          element.controls = true;
-          element.style.maxWidth = '300px';
-          element.classList.add('video-preview');
-      }
+    if (file.type.startsWith('image/')) {
+      element = document.createElement('img');
+      element.src = fileURL;
+      element.alt = 'Imagen';
+      element.style.maxWidth = '200px';
+      element.classList.add('img-preview');
+    } else if (file.type.startsWith('audio/')) {
+      element = document.createElement('audio');
+      element.src = fileURL;
+      element.controls = true;
+      element.classList.add('audio-preview');
+    } else if (file.type.startsWith('video/')) {
+      element = document.createElement('video');
+      element.src = fileURL;
+      element.controls = true;
+      element.style.maxWidth = '300px';
+      element.classList.add('video-preview');
+    }
 
-      if (element) {
-          previewContainer.appendChild(element);
-      }
+    if (element) {
+      previewContainer.appendChild(element);
+    }
   });
 }
+
+// Vincular la función al botón "Publicar"
+document.getElementById('button-publicar').addEventListener('click', agregarNuevaPublicacion);
+
+// Vincular el ícono de multimedia con el input de archivo
+document.getElementById('iconAddPicture').addEventListener('click', function() {
+  document.getElementById('fileInput').click();
+});
 
 // Vincular la función de previsualización al input de archivo
 document.getElementById('fileInput').addEventListener('change', handleFilePreview);
 
-// Cargar las publicaciones al cargar la página
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage); //Recarga la página y muestra las publicaciones guardadas
-=======
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage);
-
-=======
-document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage); //Recarga la página y muestra las publicaciones guardadas
->>>>>>> 340ce3dedbf66b38f1dd98f7f7d8b86da84b7aa1
->>>>>>> e5a13bef08d6b34b86ee759b03cf94fb46642a32
