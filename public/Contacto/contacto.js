@@ -1,142 +1,67 @@
 document.getElementById('formularioContacto').addEventListener('submit', function(event) {
+    
     // Evitar que el formulario se envíe automáticamente
     event.preventDefault();
+
+    // Inicializar la variable isValid
+    let isValid = true;
     
     // Obtener valores de los campos
-    const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value;
-    const email = document.getElementById('email').value;
-    const teléfono = document.getElementById('teléfono').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value;
     const asunto = document.getElementById('asunto').value;
     const mensaje = document.getElementById('mensaje').value;
 
     // Obtener referencias a los elementos de error
-    const nombreError = document.getElementById('nombre');
-    const apellidoError = document.getElementById('apellido');
-    const emailError = document.getElementById('email');
-    const teléfonoError = document.getElementById('teléfono');
-    const asuntoError = document.getElementById('asunto');
-    const mensajeError = document.getElementById('mensaje');
+    const nombreError = document.getElementById('nombreError');
+    const apellidoError = document.getElementById('apellidoError');
+    const emailError = document.getElementById('emailError');
+    const telefonoError = document.getElementById('telefonoError');
+    const asuntoError = document.getElementById('asuntoError');
+    const mensajeError = document.getElementById('mensajeError');
 
     // Limpiar los mensajes de error previos
     nombreError.textContent = '';
     apellidoError.textContent = '';
     emailError.textContent = '';
-    teléfonoError.textContent = '';
+    telefonoError.textContent = '';
     asuntoError.textContent = '';
     mensajeError.textContent = '';
 
-    // Variables para verificar si hay errores
-    let isValid = true;
-
     // Validar el nombre
-    if (nombre.trim() === '') {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "El nombre es requerido.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-
-        });
+    if (nombre === '') {
+        nombreError.textContent = 'El nombre es requerido.';
         isValid = false;
-        
     }
-
     // Validar el apellido
-    if (apellido.trim() === '') {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "El apellido es requerido.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-        });
+    if (apellido === '') {
+        apellidoError.textContent = 'El apellido es requerido.';
         isValid = false;
     }
-
-    // Validar el correo electrónico
+        // Validar el correo electrónico
     if (!validateEmail(email)) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Ingresa un correo electrónico válido.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-        });
+        emailError.textContent = 'Ingresa un correo electrónico válido.';
         isValid = false;
-    }
+    }    
+    
+    if (isNaN(telefono) | telefono.length < 10) {
+    telefonoError.textContent = 'Ingresa un teléfono válido.';
+    isValid = false;
+    }  
 
-    function validateEmail(email) {
-        const regex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
-        return regex.test(email);
-    }
+    if (asunto.length < 4){
+    asuntoError.textContent = 'El asunto debe ser más largo.';
+    isValid = false;
+    }  
 
-    // Validar el teléfono
-    if (isNaN(teléfono) | teléfono.length < 10) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "El teléfono debe tener al menos 10 dígitos.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-        });
-        isValid = false;
+    if (mensaje.length < 5){
+    mensajeError.textContent = 'El mensaje debe ser más largo.';
+    isValid = false;
     }
-
-    // Validar el Asunto
-    if (asunto.length < 4) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "El asunto debe ser más largo.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-        });
-        isValid = false;
-    }
-
-    // Validar el mensaje
-    if (mensaje.length < 5) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "El mensaje debe ser más largo.",
-            customClass: {
-                container: 'my-custom-container',
-                title: 'my-custom-title',
-                content: 'my-custom-content',
-                confirmButton: 'my-custom-confirm-button'
-            },
-            buttonsStyling: false
-        });
-        isValid = false;
-    }
+    
+/*   */
 
 
     // Enviar el formulario si es válido
@@ -152,38 +77,25 @@ document.getElementById('formularioContacto').addEventListener('submit', functio
             confirmButton: 'my-custom-confirm-button'
             },
             buttonsStyling: false            
+        }).then(() => {
+        const btn = document.getElementById('btn-enviar');
+        const serviceID = 'default_service';
+        const templateID = 'template_we94yl3';
+    
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+        btn.value = 'Send Email';
+        document.getElementById('formularioContacto').reset(); //para borrar los datos si se cumple la promesa de envío
+        }, (err) => {
+        btn.value = 'Send Email';
+        alert(JSON.stringify(err));
         });
-
+    });
     }
 });
 
-    
-
-/*Enviar a correo electrónico*/
-
-/////////////////////Correo//////////////////////
-const btn = document.getElementById('btn-enviar');
-
-document.getElementById('formularioContacto')
-.addEventListener('submit', function(event) {
-event.preventDefault();
-
-
-
-const serviceID = 'default_service';
-const templateID = 'template_we94yl3';
-
-emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-    btn.value = 'Send Email';
-    }, (err) => {
-    btn.value = 'Send Email';
-    alert(JSON.stringify(err));
-    });
-    this.reset();
-});
-
-
-
-
-
+// Función para validar email
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}

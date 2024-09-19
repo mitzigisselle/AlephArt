@@ -1,24 +1,16 @@
-/*Slidebar styles*/
+/*------------Sidebar y encabezados-----------*/
 .col-md-2, .col-md-12 {
     padding-top: 5%;
     margin-bottom: 5%;
     }
-    .button-container {
-        flex-direction: column;
-        }
-    
+    /*div1 y div2 de contenedores p/ filtrar por fechas y categorias*/
     .btn-group-vertical {
-            flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 100px;
+    margin-bottom: 1.5rem; 
     }
-    
-    .btn-group-vertical button {
-        margin-bottom: 100px
-    }
-    
-    .btn-group-vertical h4 {
-        margin-bottom: 2rem; 
-     }
-    
+
+    /*--¡Conoce artistas y eventos especialmente para ti!--*/
     h1 {
         font-size: 3rem;
         font-family: "Lato", sans-serif;
@@ -26,77 +18,154 @@
         font-style: normal;
         color: #050831;
     }
-        
+
+    /*--Conoce un evento lleno de creatividad cerca de ti--*/  
     h2 {
         font-size: 1.5rem;
         font-family: "Taviraj", serif;
         font-weight: 600;
-        font-style: normal;  
+        font-style: bold;  
         color: #D5ADFB;
     } 
+    
     
     .image-fluid {
         height: px;
     }
     
+
+    /*--Botón Crear Evento nuevo--*/
     #button1 {
         background-color:#F90052;
         color: #fff;
         font-size: 1.3rem;
+        border-color: #F90052;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
     }
-    
-    #div1 {
+
+    #button1:hover {
+            background-color: #D5ADFB;
+            transition: background-color 0.5s;
+            border:#D5ADFB;
+            box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+            transition: all 0.2s ease;
+    }
+   
+    /*--Contenedor para filtrar eventos por fechas--*/
+    #div1  {
         background-color: #050831;
         border-radius: 7px;
         padding: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
     }
     
-    .mt-4 {
-        color:#fff;
+    /*--Contenedor para filtrar eventos por categorias--*/
+    #div2 {
+        background-color: #050831;
         margin: 0rem 0rem;
+        padding: 0rem 1rem;
+        border-radius: 7px;
+        color:#D5E6F7;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
+    }
+
+    /*--Contenedor título categorías--*/
+    .categories-title {
+        font-size: 1.3rem;
+        margin: 3%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        align-items: center;
+        text-align: center;
     }
     
+    /*--Botones filtrar por mes--*/
     #b1 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color:#133072; 
+        font-weight: 500;
     }
     
+    #b1:hover {
+        color:#F90052;
+    }
+
     #b2 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color:#133072; 
+        font-weight: 500;
     }
-    
+
+    #b2:hover {
+        color:#F90052;
+    }
+
+    /*--Botones categorías--*/
     #b3 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color:#133072;
+        font-weight: 500;
+    }
+
+    #b3:hover {
+        color:#F90052;
     }
     
     #b4 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color: #133072;
+        font-weight: 500;
+    }
+
+    #b4:hover {
+        color:#F90052;
     }
     
     #b5 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color:#133072;
+        font-weight: 500;
+    }
+
+    #b5:hover {
+        color:#F90052;
     }
     
     #b6 {
         background-color: #D5E6F7;
         border-radius: 7px;
         color:#133072;
+        font-weight: 500;
+    }
+
+    #b6:hover {
+        color:#F90052;
+    }
+
+    #b7 {
+        background-color: #D5E6F7;
+        border-radius: 7px;
+        color:#133072;
+        font-weight: 500;
+    }
+
+    #b7:hover {
+        color:#F90052;
     }
     
-    #div2{
-        background-color: #050831;
-        margin: 1rem 0rem;
-        padding: 0rem 1rem;
-        border-radius: 7px;
+    
+    /*----Event-cards styles----*/
+    #event-container {
         text-align: center;
         color:#D5E6F7; 
     }
@@ -125,24 +194,37 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 16px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         background-color: #fff;
     }
+
+    .card:hover { 
+        scale: .99;
+        box-shadow: 0 0 20px #133072 ;
+        }
     
+    .event-description {
+        text-align: justify;
+    }
+
+    /*Día del evento*/
     #day {
         font-family: "Lato", sans-serif;
         font-weight: 900;
         font-style: normal;
-        font: color(#F90052);
+        color: #F90052;
         background-color: none;
     }
-    
+
+    /*Mes del evento*/
     #month {
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         font-style: bold;
-        font: color(#050831);
+        font-size: larger;
+        color: #133072;
         background-color: none;
+        margin-bottom: 0%;
     }
     
     .btn {
@@ -153,13 +235,15 @@
         font-family: "Lato", sans-serif;
         font-weight: 700;
         text-align: just;
+        text-align: just;
         font-style: normal;
         height: 50px;
+        height: 50px;
         color: #133072;
-        margin-bottom: 50px;
     }
     
     .event-place {
+
 
         font-family: "Lato", sans-serif;
         font-weight: 700;
@@ -176,8 +260,15 @@
         color:#133072;
         flex-grow: 1;
         overflow-y:auto;
+        overflow-y:auto;
         text-overflow: ellipsis;
         height: 80px;
+        height: 80px;
+    }
+     
+    /*Imagen cuando no hay eventos por mostrar*/
+    #no-events-image {
+        opacity: 60%;
     }
     
     
@@ -191,3 +282,74 @@
         font-family: poppins, sans-serif;
         margin-top: 25%;
       }
+
+      /*----USO DE MEDIASQUERIES*/
+      /*--Sidebar--*/
+      @media (max-width: 975px) {
+        #button1 {
+        max-width: 350px;
+        }
+
+        .btn-group-vertical {
+        max-width: 300px;
+        }
+
+        .card {
+        max-width: 300px;
+        }   
+        
+        .single-card {
+        display: flex;
+        flex-direction: column; /* Los contenedores se apilen verticalmente, se puede quitar si transformamos a desplegable */
+        justify-content: center; /* Centra verticalmente */
+        align-items: center; /* Centra horizontalmente */
+        }
+
+        #btn2 {
+        display: flex;
+        flex-direction: column; /* Los contenedores se apilen verticalmente, se puede quitar si transformamos a desplegable */
+        justify-content: center; /* Centra verticalmente */
+        align-items: center; /* Centra horizontalmente */
+        } 
+
+        .d-flex {
+        display: flex;
+        flex-direction:column;
+        }
+
+      }
+
+      /*Se usan para responsividad de las cards*/
+
+      @media (max-width: 768px) {
+        #event-container {
+            padding: 0.5rem; 
+        }
+    
+        .card {
+            max-width: 100%; 
+        }
+    }
+    
+    @media (max-width: 576px) {
+        #event-container {
+            gap: 8px; 
+        }
+    }
+
+    /* Estilo del botón para pantallas más pequeñas */
+@media (max-width: 765px) {
+    #button1 {
+        font-size: 1.6rem; 
+        padding: 8px 16px; 
+        width: 100%; 
+    }
+}
+    /*Estilo del encabezado para pantallas más pequeñas*/
+    @media (max-width: 768px) {
+        #index h1, #index h2 {
+          text-align: center;
+          margin: 0 auto;
+        }
+      }
+

@@ -3,83 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS and Fonts -->
+    <!-- CSS stylesheets -->
     <link href="../css/eventos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/navbar.css"/>
+    <link rel="stylesheet" href="/navbarAuth-css" />
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+BE+VLG&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> <!-- Fuente Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> <!-- Fuente Taviraj -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> <!-- Fuente Poppins -->
+    <!-- ícono AlephArt pestaña -->
+    <link rel="icon" href="../../assets/logosAlephArt/Logod5e6f7 (1).png" type="image/png"/>
     <title>Eventos</title>
 </head>
 <body>
   
-<!--Inicio de la Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img 
-          src="../resourses/Logod5e6f7 (2).png"
-          width="35"
-          height="35"
-          alt="Logo Aleph Art"
-        />
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav me-auto">
-          <a class="nav-item nav-link" href="../../pantallaPrincipal.html">Inicio</a>
-          <a class="nav-item nav-link" href="../../Acerca/Acerca-de-nosotrols.html">Acerca de nosotras</a>
-          <a class="nav-item nav-link" href="../../Contacto/contacto.html">Contacto</a>
-          <!-- Items que son visibles cuando el usuario inicio sesión -->
-          <div id="loggedInItems" style="display: flex">
-            <a class="nav-item nav-link" href="../../Eventos/html/eventos.html">Eventos</a>
-            <a class="nav-item nav-link" href="../../Publicaciones/Principal/principal.html"
-              >Publicaciones</a
-            >
-          </div>
-        </div>
-        <div class="navbar-nav ms-auto">
-      <!-- Foto de perfil y botón de cerrar sesión -->
-      <div
-        class="navbar-nav ms-auto order-lg-last user-actions"
-        id="loggedInIcons"
-        style="display: flex"
-      >
-        <a class="nav-link" href="/public/html/perfil.html" title="Profile">
-          <img
-            src="../resourses/fotografa 1-perfil (1).png"
-            alt="Profile"
-            class="rounded-circle"
-            width="55"
-            height="55"
-          />
-        </a>
-        <button class="btn nav-link" title="Logout" id="exit-button">
-          <img
-            src="../resourses/exit-white.png"
-            alt="Logout"
-            width="30"
-            height="30"
-          />
-        </button>
-      </div>
-    </div>
-</nav>
-  <!--Fin de Navbar-->
+ <!--Inicio de Navbar-->
+ <div id="navbar"></div>
+ <script>
+   // Función para cargar la navbar
+   function loadNavbar() {
+     fetch("/navbarAuth")
+       .then((response) => response.text())
+       .then((data) => {
+         document.getElementById("navbar").innerHTML = data;
+       })
+       .catch((error) => {
+         console.error("Error al cargar la navbar:", error);
+       });
+   }
+   // Cargar la navbar cuando se cargue el documento
+   document.addEventListener("DOMContentLoaded", loadNavbar);
+ </script>
+ <!--Fin de Navbar-->
 
     <!-- Events Page Content -->
     
@@ -88,35 +47,35 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar" id="btn2">
               <a href="../html/formulariobase.html">
-                <button type="button" class="btn btn-primary mb-3 w-100" id="button1">Crea un Nuevo Evento</button>
+                <button type="button" class="btn btn-primary mb-3 w-100" id="button1">Crear Nuevo Evento</button>
               </a>  
                 <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" id="div1">
                     <button type="button" class="btn btn-secondary mb-2" id="b1">Este mes</button>
                     <button type="button" class="btn btn-secondary mb-2" id="b2">Próximo mes</button>
                 </div>
                 <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" id="div2">
-                    <h4 class="mt-4" style="color:#D5ADFB">Categorías</h4>
+                    <div class="categories-title" style="color:#D5ADFB">Categorías</div> <!--Se cambia a div, para poder manipular el texto contenido dentro-->
                     <button type="button" class="btn btn-secondary mb-2" id="b3">Arte Urbano</button>
                     <button type="button" class="btn btn-secondary mb-2" id="b4">Tecnología</button>
                     <button type="button" class="btn btn-secondary mb-2" id="b5">Música</button>
-                    <button type="button" class="btn btn-secondary mb-2" id="b5">Dibujo</button>
-                    <button type="button" class="btn btn-secondary mb-2" id="b6">Talleres</button>
+                    <button type="button" class="btn btn-secondary mb-2" id="b6">Dibujo</button> <!--Se corrigen dos últimos ID´s, se repetía el b5-->
+                    <button type="button" class="btn btn-secondary mb-2" id="b7">Talleres</button>
                 </div>
             </div>
 
             <div class="col-md-10">
                 <div class="row">
                     <!-- Large container (Encabezado)-->
-                    <div class="col-md-12 main-content mb-4">
+                    <div class="col-md-12 main-content mb-4" id="index">
                         <h1 style="color:#050831;">¡Conoce artistas y eventos especialmente para ti!</h1>
-                        <h2 style="color: #D5ADFB;">Conoce un evento lleno de creatividad cerca de ti</h2>
+                        <h2 style="color: #D5ADFB;">Asiste a eventos llenos de creatividad cerca de ti</h2>
                     </div>
                 </div>
           
         <!-- EVENT CARDS-->
          
             <div id="eventContainer" class="row p-3 h-100" style="flex-grow: 3;">
-                <!--Aquí se generan de mnaera dinámica las cards de eventos creados.-->
+                <!--Aquí se generan de manera dinámica las cards de eventos creados.-->
             </div>
       </div>                 
       </div>      
@@ -140,10 +99,12 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/eventos.js" defer></script>
+
     <script src="../js/formularioBase3.js" defer></script>
+    <script src="../js/categories-events.js"></script> <!--Se añade script para categoria de eventos-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--<script src="../js/authStatus.js"></script>-->
+ 
+ 
   </body>
 </html>

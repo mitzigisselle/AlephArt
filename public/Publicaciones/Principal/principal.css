@@ -7,6 +7,16 @@ section {
   font-family: Arial, sans-serif;
 }
 
+/*Estilos de imagen-publicaciones*/
+.post-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  opacity: 0.7;
+  box-shadow: 5px 20px 15px #050831;
+}
+
 
 /*Estilos de formulario para crear publicaciones*/
 
@@ -21,7 +31,7 @@ section {
 
 
 #formControl{
-  border: 1px solid black;
+  border: 1px solid #D5ADFB;
   border-bottom: none;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -29,44 +39,53 @@ section {
   border-bottom-right-radius: 0px ;
   font-family: Poppins,sans-serif;
   max-width: 700px;
+  margin-bottom: 0;
 }
 
 #label-textarea{
   font-family: Poppins, sans-serif;
 }
 
-
 /*Barra azul*/
-.barra-azul{
+.barra-azul {
   background-color: #133072;
   color: white;
   font-family: Poppins, sans-serif;
-  border-radius: 5px;
+  font-weight: 300;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   display: flex;
   height: 50px;
   position: relative;
-
+  align-items: center;
 }
 
 /*Botón morado en barra azul*/
-.barra-azul button{
+#button-publicar {
   background-color: #D5ADFB;
   color: black;
   border: none;
+  font-weight: 500;
   border-radius: 10px;
-  height: 20px;
+  height: 25px;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 0;
   padding-bottom: 0;
   align-items: center;
+  margin: 20px;
 }
 
-.barra-azul button:hover{
+#button-publicar:hover{
   background-color: #F90052;
+  color:#fff;
   }
 
 
+/*Al modificar los contenedores del formualrio, se añaden margenes a los botones para un mejor diseño*/
+#iconAddPicture {
+  margin: 20px;
+}
 
 /*Íconos en barra azul*/
 .fi{
@@ -79,8 +98,8 @@ section {
 .fi:hover {
   color: #F90052; /* Color que deseas aplicar al pasar el cursor */
 }
-
 /*Terminan estilos de formulario para crear publicaciones*/
+
 /* Estilos cards */
 #card-container {
   display: flex;
@@ -92,7 +111,7 @@ section {
 }
 
 .card {
-  border: 1px solid #ddd;
+  border: 1px solid #050831;
   border-radius: 8px;
   width: 100%; /* Ancho completo del contenedor */
   max-width: 700px; /* Ancho máximo de la tarjeta */
@@ -120,7 +139,7 @@ section {
   position: relative; /* Necesario para la colocación absoluta de los botones */
   display: flex;
   flex-direction: column;
-  background-color: #d5e6f7;
+  background: linear-gradient(0deg, rgba(213,173,251,1) 0%, rgba(213,230,247,1) 100%); /*Se modifica color de fondo*/
   justify-content: space-between; /* Espacia el contenido verticalmente */
 }
 
@@ -131,17 +150,75 @@ section {
   justify-content: space-between; /* Alinea el nombre del usuario a la izquierda y los botones a la derecha */
   align-items: center; /* Alinea verticalmente el contenido */
 }
+/*Estilos de publicaciones*/
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
 
-.card-description {
-  color: #555;
-  font-size: 1rem;
-  margin-top: 5px;
+.card-username {
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.2em;
+  color: #133072; 
+}
+
+/*Estilo de fecha y hora*/
+.card-date {
+  color:#050831;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.card-buttons {
+  display: flex;
+  align-items: center;
 }
 
 .image-buttons {
-  display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  background: none;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
 }
+
+.card-description {
+  color: #133072;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  font-family: "Poppins", sans-serif;
+  text-align: justify;
+}
+
+/*Se añaden propiedades en elementos de la publicación creada*/
+.image-buttons.edit-button.btn.btn-outline-light {
+  border: none !important;
+  transition: all 0.3s ease;
+}
+.image-buttons.hover-button.edit-button:hover img {
+  transform: scale(1.1); /* Agranda la imagen un poco */
+}
+
+.image-buttons.delete-button.btn.btn-outline-light {
+  border: none !important;
+}
+.image-buttons.hover-button.delete-button:hover img {
+  transform: scale(1.1); /* Agranda la imagen un poco */
+}
+
+.image-buttons.btn.btn-outline-light {
+  border: none !important;
+}
+.image-buttons.hover-button:hover img {
+  transform: scale(1.1); /* Agranda la imagen un poco */
+}
+
 
 .image-buttons {
   display: flex;
@@ -158,13 +235,40 @@ section {
   height: 20px;
   border-radius: 5px; /* Opcional: borde redondeado para los botones */
   transition: transform 0.3s;
+  border: none;
 }
-
-
 
 .reaction-count {
   font-size: 12px; /* Tamaño del texto en pantallas más pequeñas */
   color: #333;
+}
+.edit-textarea{
+  width: 100%; /* Ajusta el ancho al contenedor padre */
+  height: 150px; /* Ajusta la altura */
+  resize: both; /* Permite redimensionar el textarea tanto en ancho como en alto */
+  border-color: #D5ADFB;
+  border-radius: 5px;
+  font-family: Poppins,sans-serif;
+}
+.save-button{
+  margin-left: 16px;
+  padding: 8px 16px;
+  background-color: #F90052;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+.save-button:hover {
+  background-color: #133072; /* Color al hacer hover */
+}
+
+/*---Footer---*/
+footer {
+  text-align: center;
+  color: #133072;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Media Queries para pantallas más pequeñas */
@@ -220,3 +324,4 @@ section {
       font-size: 8px; /* Tamaño del texto aún más pequeño en pantallas muy pequeñas */
   }
 }
+

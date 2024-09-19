@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      href="../assets/logosAlephArt/Logod5e6f7 (1).png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="css/inicio.css" />
+    <link rel="stylesheet" href="/navbarAuth-css" />
+    <link rel="stylesheet" href="/footer-css" />
+    <link rel="stylesheet" href="perfil.css" />
+    <!--Font-Google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Taviraj:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Flaticon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@latest/css/all/all.css"
+    />
+  </head>
+  <body>
+    <!--Inicio de Navbar-->
+    <div id="navbar"></div>
+    <script>
+      // Función para cargar la navbar
+      function loadNavbar() {
+        fetch("/navbarAuth")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("navbar").innerHTML = data;
+          })
+          .catch((error) => {
+            console.error("Error al cargar la navbar:", error);
+          });
+      }
+      // Cargar la navbar cuando se cargue el documento
+      document.addEventListener("DOMContentLoaded", loadNavbar);
+    </script>
+    <!--Fin de Navbar-->
+    <div
+      class="container d-flex flex-column justify-content-center"
+      id="contenedor-general-perfil"
+    >
+      <div id="div-imagen-banner">
+        <div id="backgroundName">
+          <p id="nombreArtista">Lisa Brown </p>
+          <p id="text-profesion-visible">
+            >Profesión
+          </p>
+          <textarea
+            id="textarea-profesion"
+            class="form-control"
+            style="display: none"
+          >
+          Profesión</textarea
+          >
+          <button
+            id="save-button-profesion"
+            class="btn btn-success"
+            style="display: none"
+          >
+            Guardar Cambios
+          </button>
+        </div>
+        <i class="fi fi-ss-settings" id="boton-configurar"></i>
+        <i class="fi fi-rr-pen-field botonEditar" id="boton-editar-profesion"></i>
+        <i class="fi fi-rr-pen-field botonEditar" id="boton-editar-banner"></i>
+        <input
+          type="file"
+          id="fileInputBanner"
+          accept="image/*"–
+          style="display: none"
+        />
+        <img
+          src="assets/bannerDePerfil.jpeg"
+          class="img-fluid"
+          alt="espacio para banner de perfil"
+          id="ImagenBannerDePerfil"
+        />
+      </div>
+      <div id="presentacion-del-artista">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2" id="div-presentacion-artista">
+          <div id="div-imagenPerfil">
+            <i
+              class="fi fi-rr-pen-field botonEditar"
+              id="boton-editar-foto-perfil"
+            ></i>
+            <input
+              type="file"
+              id="fileInputPerfil"
+              accept="image/*"
+              style="display: none"
+            />
+            <img
+              src="assets/imagenDePerfil.jpeg"
+              class="img-fluid"
+              alt="espacio para imagen de perfil"
+              id="imagenDePerfil"
+            />
+          </div>
+          <div>
+            <div class="row" id="div-sobreMiTitulo">
+              <h1>Sobre mí:</h1>
+            </div>
+            <div class="row" id="div-sobreMiTexto">
+              <p id="text-sobreMi-visible">
+                Da click en el botón de configuración para modificar este apartado. Comparte con las y los demás artistas de la comunidad, quién eres y qué te gusta crear. Nos interesa mucho conocerte.
+              </p>
+              <i
+                class="fi fi-rr-pen-field botonEditar"
+                id="boton-editar-sobre-mi"
+              ></i>
+              <textarea
+                id="textarea-sobreMi"
+                class="form-control"
+                style="display: none"
+              >
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores consequatur sed aliquam laborum incidunt? Facere aperiam laudantium earum rerum...</textarea
+              >
+              <button
+                id="save-button-sobreMi"
+                class="btn btn-success"
+                style="display: none"
+              >
+                Guardar Cambios
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="div-titulo-portafolio">
+        <h2>Portafolio</h2>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2" id="proyecto-reciente">
+        <div >
+          <div id="div-img-proyecto-reciente">
+            <i
+              class="fi fi-rr-pen-field botonEditar"
+              id="boton-editar-foto-proyecto"
+            ></i>
+            <input
+              type="file"
+              id="fileInputProyecto"
+              accept="image/*"
+              style="display: none"
+            />
+            <img
+              src="assets/recienteProyecto.jpeg"
+              class="img-fluid"
+              alt="imagen de mi más reciente proyecto"
+              id="imagen-proyecto-reciente"
+            />
+          </div>
+        </div>
+        <div id="div-titulo-reciente-proyecto">
+          <h4>Mi más reciente proyecto:</h4>
+          <i
+            class="fi fi-rr-pen-field botonEditar"
+            id="boton-editar-titulo-proyecto"
+          ></i>
+          <h5 id="text-nombre-proyecto-visible">Nombre del proyecto</h5>
+          <textarea
+            id="nombre-proyectoReciente"
+            class="form-control"
+            style="display: none"
+          >
+Nombre del proyecto</textarea
+          >
+          <button
+            id="save-button-Nombreproyecto"
+            class="btn btn-success"
+            style="display: none"
+          >
+            Guardar Cambios
+          </button>
+
+          <i
+            class="fi fi-rr-pen-field botonEditar"
+            id="boton-editar-proyecto-reciente"
+          ></i>
+          <p id="text-proyectoReciente-visible">
+            Da click en el botón de configuración para modificar este apartado. Comparte con nosotros información sobre tu más reciente proyecto, cómo lo creaste, en qué te inspiraste y si colaboraste con demás artistas de la comunidad.              >
+          </p>
+          <textarea
+            id="textarea-proyectoReciente"
+            class="form-control"
+            style="display: none"
+          >
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores consequatur sed aliquam laborum incidunt? Facere aperiam laudantium earum rerum...</textarea
+          >
+          <button
+            id="save-button-proyectoReciente"
+            class="btn btn-success"
+            style="display: none"
+          >
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--POSTS/ GALERIA-->
+    <div id="gallery-container" class="section">
+      <h2>📸</h2>
+      <div id="gallery"></div>
+    </div>
+
+    <!-- MODAL DE IMAGENES -->
+    <div
+      class="modal fade"
+      id="modalContainer"
+      tabindex="-1"
+      aria-labelledby="imagePreviewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              id="modalImage"
+              src=""
+              alt="User Image"
+              class="img-fluid mb-3"
+            />
+            <p id="modalDescription" class="lead"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Función para cargar el footer
+      function loadFooter() {
+        fetch("http://localhost:8080/footer")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("footer").innerHTML = data;
+          })
+          .catch((error) => {
+            console.error("Error al cargar footer:", error);
+          });
+      }
+
+      // Cargar el footer cuando se cargue el documento
+      document.addEventListener("DOMContentLoaded", loadFooter);
+    </script>
+
+    <footer id="footer"></footer>
+
+    <!--Para centrar el modal cuando se abre la imagen-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imagePreviewModal = document.getElementById("modalContainer");
+        imagePreviewModal.addEventListener("show.bs.modal", function (event) {
+          const modalDialog = this.querySelector(".modal-dialog");
+          modalDialog.style.display = "flex";
+          modalDialog.style.alignItems = "center";
+          modalDialog.style.minHeight = "calc(100% - 1rem)";
+        });
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="perfil.js"></script>
+  </body>
+</html>

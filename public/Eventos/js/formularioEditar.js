@@ -3,6 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del evento desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
+    // Vincula el boton agregar imagen con el input de archivo
+    document.getElementById('addImgEvents').addEventListener('click', function() {
+        document.getElementById('inputImg').click();
+        });
+        
+        document.getElementById('inputImg').addEventListener('change', function() {
+            const files = document.getElementById('inputImg').files;
+            if (files.length > 0) {
+                const file = files[0]; 
+                const fileURL = URL.createObjectURL(file);
+        
+                document.getElementById('portada').src = fileURL;
+        
+                // Guarda la URL en el objeto item
+                item.image = fileURL;
+        
+                // Limpia el input
+                document.getElementById('inputImg').value = '';
+            }
+        });
 
     if (eventId) {
         // Cargar los datos del evento desde localStorage
@@ -16,11 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCity').value = eventToEdit.ciudad;
             document.getElementById('inputState').value = eventToEdit.estado;
             document.getElementById('inputCategory').value = eventToEdit.categoria;
+            document.getElementById('inputHora').value = eventToEdit.categoria;
             document.getElementById('inputMode').value = eventToEdit.modalidad;
             document.getElementById('descripcion').value = eventToEdit.descripcion;
 
             // Actualizar la imagen si es necesario
-            document.getElementById('portada').src = eventToEdit.image || '../resourses/audience-1867754_1280.jpg';
+            document.getElementById('portada').src = '/public/Eventos/assets/audience-1867754_1280.jpg' || eventToEdit.image ; //Se cambió el orden d ela condición para mostrar la imagen predeterminada
         }
     }
 
@@ -37,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ciudad: document.getElementById('inputCity').value,
             estado: document.getElementById('inputState').value,
             categoria: document.getElementById('inputCategory').value,
+            hora: document.getElementById('inputHora').value,
             modalidad: document.getElementById('inputMode').value,
             descripcion: document.getElementById('descripcion').value
         };

@@ -6,6 +6,27 @@
         text-align: center;
         font-family: 'Lato', sans-serif;
         }
+
+        .containerI {
+            position: relative;
+            width: 100%;
+          }
+          containerI img {
+            width: 100%;
+            height: auto;
+          }
+          .containerI .btnIm {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color:#F90052;
+            border-color: #F90052;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 10px;
+          }
     
         #formularioEvento {
             background-color: rgba(213, 173, 251, 0.2);/*color Mauve con opacidad 20%*/
@@ -27,17 +48,26 @@
           }
     
     
-        .btn-enviar{
+        #btn-enviar{
             background-color:#F90052;
             border-color: #F90052;
             font-family: 'Poppins', sans-serif;
             width: 100%;
             border-radius: 10px;
-           }
-    
+        }
+
+        #btn-cancelar {
+          margin-top: 15px;
+          background-color:darkgray;
+          border-color: darkgray;
+          font-family: 'Poppins', sans-serif;
+          width: 100%;
+          border-radius: 10px;
+        }
+           
           
           
-           footer {
+        footer {
             text-align: center;
             color: #133072;
-           }
+        }

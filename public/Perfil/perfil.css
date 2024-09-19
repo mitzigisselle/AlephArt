@@ -1,0 +1,418 @@
+/*
+?Paleta de colores.
+*Oxford blue: #050831
+*Yale blue: #133072
+*Columbia blue: #D5E6F7
+*Mauve: #D5ADFB   
+*Folly: #F90052
+*/
+
+#contenedor-general-perfil{
+    max-width: 700px;
+    background-position: center;
+    position: relative;
+}
+
+/*-------------------------BANNER--------------------------*/
+
+#div-imagen-banner{ /*div de la imagen de banner*/
+    position: relative;
+    padding: 0;
+    margin: 0;
+    max-width: 700px;
+    max-height: 350px;
+    object-fit: cover;
+    overflow:hidden; /*oculta el contenido que sobra*/
+}
+#ImagenBannerDePerfil{
+    width: 100%;
+    height: auto;
+}
+#backgroundName{
+    z-index: 1;
+    position: absolute;
+    background-color: rgb(255,255,255, 30%) ;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 250px;
+    margin-left: 50px;
+    text-align: center;
+}
+#textarea-profesion{
+    position: relative;
+    margin-bottom: -87px;
+    max-height: 50px;
+}
+#save-button-profesion{
+    z-index: 4;
+    position: absolute;
+}
+#nombreArtista{
+    z-index: 3;
+    color: white;
+    margin-top: -30px;
+    font-size: 40px;
+    font-family: Loto, sans-serif;
+    font-weight: bolder;
+}
+#text-profesion-visible{
+    font-size: 30px;
+    margin-top: -30px;
+    font-family: Taviraj, sans-serif;
+    font-weight:600;
+    color:black
+}
+/*-------------------------SOBRE MÍ--------------------------*/
+#presentacion-del-artista{/*div general "Sobre mí"*/
+    background-color: #D5E6F7;
+    min-height: 300px;
+    max-width: 700px;
+}
+#div-imagenPerfil{
+    position:relative;
+    margin-top: 35px;
+    margin-left: 25px;
+    width: 250px;
+    height: 230px;
+    overflow: hidden;
+}
+#imagenDePerfil{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+#div-sobreMiTitulo{
+    padding-top: 30px;
+    padding-left: 20px;
+    font-family: Lato, sans-serif;
+}
+#div-sobreMiTexto{
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-family: Poppins, sans-serif;
+    font-size: small;
+}
+#div-ContactMe{
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 0;
+    font-family: Taviraj, sans-serif;
+    font-weight:lighter;
+}
+
+/*-------------------------PORTAFOLIO--------------------------*/
+#div-titulo-portafolio{
+    color: #133072;
+    font-family: Lato, sans-serif;
+    max-width: 700px;
+    max-height: 200px;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+#div-titulo-reciente-proyecto{
+    font-family: Taviraj, sans-serif;
+}
+#div-img-proyecto-reciente{
+    position: relative; 
+    max-width: 315px;
+    max-height: 210px;
+    overflow: hidden;
+}
+#imagen-proyecto-reciente {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+/*-------------------------ICONOS/BOTONES--------------------------*/
+/*botón de editar con ícono*/
+.fi{
+    color:#133072;
+    font-size: 25px;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+.fi:hover {
+    color: #F90052; 
+    cursor: pointer;
+}
+.btn-success{
+    background-color: #D5ADFB !important; 
+    border-color: #D5ADFB !important;
+    color: black !important;
+    cursor: pointer;
+    font-family: Poppins, sans-serif !important;
+}
+.btn-success:hover{
+    background-color:#F90052 !important;
+    border-color: #F90052 !important;
+    color: white !important;
+}
+/* Ocultar los iconos de edición */
+.botonEditar {
+    display: none;
+}
+/* Mostrar los iconos cuando se active la clase*/
+.mostrar-iconos .botonEditar {
+    display: inline;
+}
+/*botones en banner*/
+#boton-configurar{
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    color: white;
+    padding: 10px; 
+}
+#boton-configurar:hover{
+color:#F90052;
+cursor: pointer;
+}
+#boton-editar-banner{
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    color: white;
+    padding: 10px; 
+}
+#boton-editar-profesion{
+    position: absolute; 
+    top: 263px; 
+    left: 50px; 
+    color: white;
+    padding: 10px; 
+    z-index: 4;
+}
+#boton-editar-banner:hover{
+color:#F90052;
+cursor: pointer;
+}
+/*botones Sobre mí*/
+#boton-editar-foto-perfil{
+    position: absolute; 
+    top: -10px; 
+    right: 0px; 
+    color: #133072;
+    padding: 10px; 
+}
+#boton-editar-foto-perfil:hover{
+color:#F90052;
+cursor: pointer;
+}
+/*botones en Portafolio*/
+#boton-editar-foto-proyecto{
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    color: white;
+    padding: 10px; 
+}
+#boton-editar-foto-proyecto:hover{
+color:#F90052;
+cursor: pointer;
+}
+/*-------------------------POSTS/GALERIA--------------------------*/
+#gallery-container {
+    width: 100%;
+    max-width: 700px; 
+    margin: 5vh auto 10vh; 
+    border-color: black;
+    padding: 0 15px; 
+    font-family: "Poppins", sans-serif;
+}
+
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid responsivo */
+    gap: 10px;
+}
+
+.gallery-img-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; 
+}
+
+.gallery-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/*-------------------------MODAL DE IMAGENES--------------------------*/
+#modalContainer .modal-dialog {
+    max-width: 90%; 
+    width: auto;
+    margin: 1.75rem auto; /* centra el modal horizontalmente */
+}
+
+#modalContainer .modal-content {
+    max-height: 90vh; /* limita la altura del modal */
+    overflow-y: auto; /* Agrega un scroll si la imagen excede la medida anterior */
+}
+
+#modalContainer .modal-body {
+    text-align: center;
+    padding: 20px; 
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+#btn-upload, #uploadButton {
+    background-color: #F90052 !important; 
+    border: none;
+}
+
+.modal-header {
+    border-bottom: none !important;
+    padding: 1rem; 
+}
+#modalDescription {
+    font-size: 1rem;
+}
+
+/*-------------------------MEDIA QUERIES--------------------------*/
+@media (max-width: 768px) {
+    #gallery-container {
+        margin-top: 10vh; 
+    }
+    #gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+    #modalContainer .modal-dialog {
+        margin: 0.5rem; 
+    }
+    #contenedor-general-perfil {
+        max-width: 100%;
+    }
+    #div-imagen-banner {
+        max-height: 250px;
+    }
+    #backgroundName {
+        margin-top: 180px;
+        margin-left: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #nombreArtista {
+        font-size: 30px;
+    }
+
+    #text-profesion-visible {
+        font-size: 24px;
+    }
+
+    #presentacion-del-artista {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    #div-imagenPerfil {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    #div-sobreMiTitulo,
+    #div-sobreMiTexto,
+    #div-ContactMe {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #div-img-proyecto-reciente {
+        max-width: 100%;
+    }
+
+    #div-imagenPerfil{
+        width: 250px;
+        height: 230px;
+    }
+    #nombreArtista{
+        margin-top: -20px;
+    }
+    #text-profesion-visible{
+        margin-top: -30px;
+    }
+    #text-profesion-visible{
+        margin-top: -20px;
+    }
+    #boton-editar-profesion {
+        top: 150px;
+        left: 5px;
+}
+#backgroundName{
+    margin-top: 150px;
+    margin-left: 50px;
+    text-align: center;
+}
+}
+
+@media (max-width: 575px){
+
+#div-img-proyecto-reciente{
+    position: relative; 
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+#imagen-proyecto-reciente {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#nombreArtista{
+    margin-top: -25px;
+}
+#text-profesion-visible{
+margin-top: -10px;
+}
+#backgroundName{
+margin-top: 160px;
+margin-left: 50px;
+text-align: center;
+}
+#boton-editar-profesion {
+left: 3px;
+}}
+@media (max-width: 487px){
+#nombreArtista{
+    margin-top: -25px;
+}
+#text-profesion-visible{
+    display: none;
+}
+#boton-editar-profesion {
+    top: 100px;
+    left: 5px;
+}
+
+#text-profesion-visible{
+    margin-top: -25px;
+    display: none;
+}
+#backgroundName{
+    margin-top: 120px;
+    margin-left: 50px;
+    text-align: center;
+}}
+@media (max-width: 410px){
+    #backgroundName{
+        margin-top: 100px;
+        margin-left: 50px;
+        text-align: center;
+    }
+}

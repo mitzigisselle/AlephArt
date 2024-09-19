@@ -12,13 +12,12 @@ git checkout -b -origin-
 
 
 -------------
-Para hacer cambios en nuestra nueva rama:
+Para hacer y subir cambios en nuestra nueva rama:
 
 1. Hacer una rama nueva (git checkout -b -nueva rama-)
 2. hacemos los cambios, guardamos
-3. los agregamos a envío (git add -nombre del archivo modificado-)
+3. los agregamos a envío (git add -nombre del archivo modificado- ó git add . )
 4. git commit -m "describimos los cambios hechos"
 5. git push -origin- -nombre de la rama-
 
 
-Hola, soy Violeta
