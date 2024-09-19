@@ -179,13 +179,13 @@ function updatePublicationData(index, updatedData) {
 // Eliminar la publicación del localStorage
 function deletePublicationData(index) {
   const items = JSON.parse(localStorage.getItem("items")) || [];
-  if (index >= 0 && index < items.length) {
+  //if (index >= 0 && index < items.length) {
     items.splice(index, 1);
     localStorage.setItem("items", JSON.stringify(items));
     card.innerHTML = '';
     loadItemsFromLocalStorage();
 
-  }
+  //}
 }
 
 // Función para agregar una nueva publicación y guardarla en el localStorage

@@ -126,38 +126,45 @@
 
       <section class="section">
 
+<br>
          <!-- Formulario para crear publicación -->
-          <div id="card-container" >
+      <div id="card-container" >
+         <!-- Se añade imagen de invitación a publicar -->
 
-
-            
-            <br><br><br>
+           <div class="post-image-container">
+            <img class="post-photo img-fluid" src="/imgPublicaciones/publica aquí tu ultima obra de arte.gif" alt="post-image">
+           </div>
+          <!-- Continuación de formulario -->
+            <br>
             <div class="form-floating">
               <textarea class="form-control" id="formControl" placeholder="Leave a comment here" style="height: 120px"></textarea>
               <label for="formControl" id="label-textarea">¿Qué te gustaría compartir?</label>
-            </div>
-            <div class="card cardEdit" id="card-edit">
-              <div class="card-body barra-azul d-flex justify-content-between">
+              <div class="card-body barra-azul d-flex justify-content-between" id="card-edit">
                 <div class="div-icons">
                   <i class="fi fi-rr-add-image" id="iconAddPicture"></i> <!-- ícono agregar imagen -->
                   <input type="file" id="fileInput" multiple style="display: none;"> <!-- Input para archivos oculto -->
                 </div>
                 <button type="button" class="btn btn-danger" id="button-publicar">Publicar</button>
-              </div>
+                </div>
             </div>
+
             <!-- Contenedor para la previsualización de archivos -->
+
           <div id="preview-container"></div>
 
-            <br><br>
+            <br>
             <!-- Cards -->    
             <div id="card-container"></div>
-          </div>
+      </div>
 
 
       </section>
   
-
-     
+      <br>
+      <footer> <p><small>© 2024 AlephArt</small></p>
+        <br>
+        <br>
+      </footer>
 
 
    

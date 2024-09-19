@@ -19,36 +19,36 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaC
   });
 
   card.innerHTML = `
-    <div class="card-media">
-      ${imageUrl ? `<img src="${imageUrl}" alt="Imagen" class="card-image">` : fileElements}
-    </div>
-    <div class="card-content">
-      <div class="card-title">
-        <span class="card-username">${usuario}</span>
-        <div class="card-buttons">
-          <button class="image-buttons edit-button">
-            <img src="../../assets/iconos/pen-field.png" alt="edit">
-          </button>
-          <button class="image-buttons delete-button">
-            <img src="../../assets/iconos/trash.png" alt="delete">
-          </button>
-          <button class="image-buttons">
-            <img src="../../assets/iconos/sparkles.png" alt="Like">
-          </button>
-          <div class="like-number"></div>
-          <button class="image-buttons">
-            <img src="../../assets/iconos/share.png" alt="Share">
-          </button>
-        </div>
-      </div>
-      <div class="card-date">${fechaCreacion}</div> 
-      <p class="card-description">${contenido}</p>
-      <div class="edit-form" style="display: none;">
-        <textarea class="edit-textarea">${contenido}</textarea>
-        <button class="save-button">Guardar</button>
+  <div class="card-media">
+    ${imageUrl ? `<img src="${imageUrl}" alt="Imagen" class="card-image">` : fileElements}
+  </div>
+  <div class="card-content">
+    <div class="card-title">
+      <span class="card-username">${usuario}</span>
+      <div class="card-buttons">
+        <button class="image-buttons edit-button hover-button">
+          <img src="../../assets/iconos/pen-field.png" alt="edit">
+        </button>
+        <button class="image-buttons delete-button hover-button">
+          <img src="../../assets/iconos/trash.png" alt="delete">
+        </button>
+        <button class="image-buttons hover-button">
+          <img src="../../assets/iconos/sparkles.png" alt="Like">
+        </button>
+        <div class="like-number"></div>
+        <button class="image-buttons hover-button">
+          <img src="../../assets/iconos/share.png" alt="Share">
+        </button>
       </div>
     </div>
-  `;
+    <div class="card-date">${fechaCreacion}</div> 
+    <p class="card-description">${contenido}</p>
+    <div class="edit-form" style="display: none;">
+      <textarea class="edit-textarea">${contenido}</textarea>
+      <button class="save-button">Guardar</button>
+    </div>
+  </div>
+`;
   // Obtener los elementos que necesitan eventos
   const editButton = card.querySelector('.edit-button');
   const deleteButton = card.querySelector('.delete-button');

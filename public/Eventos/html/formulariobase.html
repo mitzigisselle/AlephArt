@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../css/formulariobase.css">
-    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="/navbarAuth-css" />
 
     <!--Font-Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,69 +25,26 @@
 
 <body>
 
-<!--Inicio de la Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img 
-        src="../assets/Logod5e6f7 (2).png"
-        width="35"
-        height="35"
-        alt="Logo Aleph Art"
-      />
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav me-auto">
-        <a class="nav-item nav-link" href="../../pantallaPrincipal.html">Inicio</a>
-        <a class="nav-item nav-link" href="../../Acerca/Acerca-de-nosotras.html">Acerca de nosotras</a>
-        <a class="nav-item nav-link" href="../../Contacto/contacto.html">Contacto</a>
-        <!-- Items que son visibles cuando el usuario inicio sesión -->
-        <div id="loggedInItems" style="display: flex">
-          <a class="nav-item nav-link" href="../../Eventos/html/eventos.html">Eventos</a>
-          <a class="nav-item nav-link" href="../../Publicaciones/Principal/principal.html"
-            >Publicaciones</a
-          >
-        </div>
-      </div>
-      <div class="navbar-nav ms-auto">
-    <!-- Foto de perfil y botón de cerrar sesión -->
-    <div
-      class="navbar-nav ms-auto order-lg-last user-actions"
-      id="loggedInIcons"
-      style="display: flex"
-    >
-      <a class="nav-link" href="/public/html/perfil.html" title="Profile">
-        <img
-          src="../assets/fotografa 1-perfil (1).png"
-          alt="Profile"
-          class="rounded-circle"
-          width="55"
-          height="55"
-        />
-      </a>
-      <button class="btn nav-link" title="Logout" id="exit-button">
-        <img
-          src="../assets/exit-white.png"
-          alt="Logout"
-          width="30"
-          height="30"
-        />
-      </button>
-    </div>
-  </div>
-</nav>
-<!--Fin de Navbar-->
+ 
+ <!--Inicio de Navbar-->
+ <div id="navbar"></div>
+ <script>
+   // Función para cargar la navbar
+   function loadNavbar() {
+     fetch("/navbarAuth")
+       .then((response) => response.text())
+       .then((data) => {
+         document.getElementById("navbar").innerHTML = data;
+       })
+       .catch((error) => {
+         console.error("Error al cargar la navbar:", error);
+       });
+   }
+   // Cargar la navbar cuando se cargue el documento
+   document.addEventListener("DOMContentLoaded", loadNavbar);
+ </script>
+ <!--Fin de Navbar-->
+
 
     <br><br>
     <div class="container">
@@ -100,8 +57,9 @@
                    <br>
                    <h1 class="titulo ">Crear Evento</h1>
                    <div class="containerI">
-                   <img src="../assets/audience-1867754_1280.jpg" alt="img-form-crete-events" class="img-fluid" id="portada">
-                   <button type="button" class="btnIm">Agregar imagen</button>
+                   <img src="../assets/audience-1867754_1280.jpg" alt="img-form-create-events" class="img-fluid" id="portada">
+                   <button type="button" id="addImgEvents" class="btnIm">Agregar imagen</button>
+                   <input  type="file" id="inputImg"  style="display: none;">
                   </div>
                    <br>  <br> 
                     
@@ -119,19 +77,152 @@
                           <input type="date" class="form-control" id="inputDate" placeholder="Fecha">
                           <span id="inputDateError" class="error-message text-danger"></span>
                         </div>
-
+                          
                         <div class="col-md-3">
-                         <label for="inputCity" class="form-label"></label>
-                         <input type="text" class="form-control" id="inputCity" placeholder="Ciudad">
-                         <span id="inputCityError" class="error-message text-danger"></span>
-                        </div>
+                          <label for="inputCity" class="form-label"></label>
+                          <select class="form-select" id="inputCity">
+                          <option  value="Ciudad" selected¿>Ciudad</option>
+                          <option value="Acapulco de Juárez">Acapulco de Juárez</option>
+                          <option value="Aguascalientes">Aguascalientes</option>
+                          <option value="Apatzingán de la Constitución">Apatzingán de la Constitución</option>
+                          <option value="Apodaca">Apodaca</option>
+                          <option value="Buena Vista">Buena Vista</option>
+                          <option value="Cabo San Lucas">Cabo San Lucas</option>
+                          <option value="Campeche">Campeche</option>
+                          <option value="Cancún">Cancún</option>
+                          <option value="Celaya">Celaya</option>
+                          <option value="Chalco de Díaz Covarrubias">Chalco de Díaz Covarrubias</option>
+                          <option value="Chetumal">Chetumal</option>
+                          <option value="Chicoloapan">Chicoloapan</option>
+                          <option value="Chihuahua">Chihuahua</option>
+                          <option value="Chimalhuacán">Chimalhuacán</option>
+                          <option value="Chimpalcingo de los Bravo">Chipalcingo de los Bravo</option>
+                          <option value="Cholula de Rivadavia">Cholula de Rivadavia</option>
+                          <option value="Ciudad Acuña">Ciudad Acuña</option>
+                          <option value="Ciudad Cuahutemoc">Ciudad Cuahutemoc</option>
+                          <option value="CDMX">CDMX</option> 
+                          <option value="Ciudad del Carmen">Ciudad del Carmen</option>
+                          <option value="Ciudad Guzmán">Ciudad Guzmán</option>
+                          <option value="Ciudad Juárez">Ciudad Juárez</option>
+                          <option value="Ciudad López Mateos">Ciudad López Mateos</option>
+                          <option value="Ciudad Madero">Ciudad Madero</option>
+                          <option value="Ciudad Obregón">Ciudad Obregón</option>
+                          <option value="Ciudad Valles">Ciudad Valles</option>
+                          <option value="Ciudad Victoria">Ciudad Victoria</option>
+                          <option value="Coahuila">Coahuila</option>
+                          <option value="Coatzacoalcos">San Luis Potosí</option>
+                          <option value="Colima">Colima</option>
+                          <option value="Comitán de Domínguez">Comitán de Domínguez</option>
+                          <option value="Córdoba">Córdoba</option>
+                          <option value="Cuautitlán">Cuautitlán</option>
+                          <option value="Cuautitlán Izcalli">Cuautitlán Izcalli</option>
+                          <option value="Cuahutla">Cuahutla</option>
+                          <option value="Cuernavaca">Cuernavaca</option>
+                          <option value="Culiacán Rosales">Culiacán Rosales</option> 
+                          <option value="Delicias">Delicias</option>
+                          <option value="Durango">Durango</option>
+                          <option value="Ecatepec de Morelos">Ecatepec de Morelos</option>
+                          <option value="Ensenada">Ensenada</option>
+                          <option value="El Pueblito">El Pueblito</option>
+                          <option value="Fresnillo">Fresnillo</option>
+                          <option value="García">García</option>
+                          <option value="General Escobedo">General Escobedo</option>
+                          <option value="Gomez Palacio">Gomez Palacio</option>
+                          <option value="Guadalajara">Guadalajara</option>
+                          <option value="Guadalupe">Guadalupe</option>
+                          <option value="Guanajuato">Guanajuato</option>
+                          <option value="Guaymas">Guaymas</option>
+                          <option value="Hemosillo">Hermosillo</option>
+                          <option value="Hidalgo del Parral">Hidalgo del Parral</option>
+                          <option value="Iguala">Iguala</option>
+                          <option value="Irapuato">Irapuato</option>
+                          <option value="Ixtapaluca">Ixtapaluca</option>
+                          <option value="Jiutepec">Jiutepec</option>
+                          <option value="Juárez">Juárez</option>
+                          <option value="Kanasín">Kanasín</option>
+                          <option value="La Paz">La Paz</option>
+                          <option value="Lagos de Moreno">Lagos de Moreno</option>
+                          <option value="León">León</option>
+                          <option value="Los Mochis">Los Mochis</option>
+                          <option value="Manzanillo">Manzanillo</option>
+                          <option value="Matamoros">Matamoros</option>
+                          <option value="Mazatlán">Mazatlán</option>
+                          <option value="Mérida">Mérida</option>
+                          <option value="Mexicali">Mexicali</option>
+                          <option value="Minatitlán">Minatitlán</option>
+                          <option value="Miramar">Miramar</option>
+                          <option value="Monclova">Monclova</option>
+                          <option value="Monterrey">Monterrey</option>
+                          <option value="Morelia">Morelia</option>
+                          <option value="Naucalpan de Juárez">Naucalpan de Juárez</option>
+                          <option value="Navajoa">Navajoa</option>
+                          <option value="Nezahualcóyotl">Nezahualcóyotl</option>
+                          <option value="Nogales">Nogales</option>
+                          <option value="Nuevo Laredo">Nuevo Laredo</option>
+                          <option value="Oaxaca de Juárez">Oaxaca de Juárez</option>
+                          <option value="Ojo de Agua">Ojo de Agua</option>
+                          <option value="Orizaba">Orizaba</option>
+                          <option value="Pachuca de Soto">Pachuca de Soto</option>
+                          <option value="Playa del Carmen">Playa del Carmen</option>
+                          <option value="Piedras Negras">Piedras Negras</option>
+                          <option value="Poza Rica de Hidalgo">Poza Rica de Hidalgo</option>
+                          <option value="Puebla de Zaragoza">Puebla de Zaragoza</option>
+                          <option value="Puerto Vallarta">Puerto Vallarta</option>
+                          <option value="Querétaro">Querétaro</option>
+                          <option value="Ramos Arizpe">Ramos Arizpe</option>
+                          <option value="Reynosa">Reynosa</option>
+                          <option value="Rosarito">Rosarito</option>
+                          <option value="Río Bravo">Río Bravo</option>
+                          <option value="Salamanca">Salamanca</option>
+                          <option value="Saltillo">Saltillo</option>
+                          <option value="San Cristóbal de las Casas">San Cristóbal de las Casas</option>
+                          <option value="San Francisco Coacalco">San Francisco Coacalco</option>
+                          <option value="San José del Cabo">San José del Cabo</option>
+                          <option value="San Juan Bautista Tuxtepec">San Juan Bautista Tuxtepec</option>
+                          <option value="San Juan del Río">San Juan del Río</option>
+                          <option value="San Luis Potosí">San Luis Potosí</option>
+                          <option value="San Luis Río Colorado">San Luis Río Colorado</option>
+                          <option value="San Nicolás de las Garza">San Nicolás de los Garza</option>
+                          <option value="San Miguel de Allende">San Miguel de Allende</option>
+                          <option value="San Pablo de las Salinas">San Pablo de las Salinas</option>
+                          <option value="San Pedro Garza García">San Pedro Garza García</option>
+                          <option value="Santa Catarina">Santa Catarina</option>
+                          <option value="Soledad de Graciano Sánchez">Soledad de Graciano Sánchez</option>
+                          <option value="Tampico">Tampico</option>
+                          <option value="Tapachula">Tapachula</option>
+                          <option value="Tehuacán">Tehuacán</option>
+                          <option value="Temixco">Temixco</option>
+                          <option value="Tepexpan">Tepexpan</option>
+                          <option value="Tepic">Tepic</option>
+                          <option value="Tijuana">Tijuana</option>
+                          <option value="Tlalnepantla de Baz">Tlalnepantla de Baz</option>
+                          <option value="Tlaquepaque">Tlaquepaque</option>
+                          <option value="Toluco de Lerdo">Toluca de Lerdo</option>
+                          <option value="Tonalá">Tonalá</option>
+                          <option value="Torreón">Torreón</option>
+                          <option value="Tulancingo de Bravo">Tulancingo de Bravo</option>
+                          <option value="Tulum">Tulum</option>
+                          <option value="Tuxtla Guitierrez">Tuxtla Guitierrez</option>
+                          <option value="Uruapan del Progreso">Uruapan del Progreso</option>
+                          <option value="Veracruz">Veracruz</option>
+                          <option value="Villa de Álvarez">Villa de Álvarez</option>
+                          <option value="Villa Nicolás Romero">Villa Nicolás Romero</option>
+                          <option value="Villahermosa">Villahermosa</option>
+                          <option value="Xalapa-Enriquez">Xalapa-Enriquez</option>
+                          <option value="Xico">Xico</option>
+                          <option value="Zacatecas">Zacatecas</option>
+                          <option value="Zamora de Hidalgo">Zamora de Hidalgo</option>
+                          <option value="Zapopan">Zapopan</option>
+                       </select>
+                          <span id="inputCityError" class="error-message text-danger"></span>
+                       </div>
 
                         <div class="col-md-3">
                          <label for="inputState" class="form-label"></label>
                            <select id="inputState" class="form-select" >
                              <option  value="Estado" selected¿>Estado</option>
-                               <option value="Estado Aguscalientes">Aguascalientes</option>
-                               <option value="Estado Baja California">Baja California</option>
+                               <option value="Aguscalientes">Aguascalientes</option>
+                               <option value="Baja California">Baja California</option>
                                <option value="Baja California Sur">Baja California Sur</option>
                                <option value="Campeche">Campeche</option>
                                <option value="CDMX">CDMX</option>
@@ -169,7 +260,7 @@
                         <div class="col-md-3">
                           <label for="inputcategory" class="form-label"></label>
                           <select id="inputCategory" class="form-select" >
-                             <option value="Categoría" selected>Categoría</option>
+                             <option value="Categoría" selected>Categoría</option> <!--Este creo que se quitaría para que no quede como opción-->
                              <option value="Categoría1">Arte Urbano</option>
                              <option value="Categoría2">Tecnologías</option>
                              <option value="Categoría3">Música</option>
@@ -179,8 +270,16 @@
                          <span id="inputCategoryError" class="error-message text-danger"></span>
                       </div>
               </div>
-              <br><br>
-            
+              <br>
+              <!--campo hora-->
+              <div class="form-group">
+                <label for="hora" class="form-label">Hora del evento:</label>
+                <br>
+                <input class="form-control" type="time" id="inputHora" name="inputHora">
+                <span id="inputHoraError" class="error-message text-danger"></span>
+              </div>
+
+
 
               <div class="form-group">
                    <label for="mode" class="labels"></label>
@@ -200,10 +299,12 @@
             <br><br>
 
             <div class="div-button">
-               <button type="submit" class="btn btn-danger 
-               btn-enviar"> Crear Evento</button>
+               <button type="submit" class="btn btn-danger" id= "btn-enviar"> Crear Evento</button>
                <a id="emailA"></a>
+               <a href="./eventos.html" class="btn btn-secondary btn-cancelar">Cancelar</a>
             </div>
+
+            
              <br><br><br><br>
                 
              </form>

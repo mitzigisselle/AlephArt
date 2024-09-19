@@ -12,6 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
 
+    // Vincula el boton agregar imagen con el input de archivo
+    document.getElementById('addImgEvents').addEventListener('click', function() {
+        document.getElementById('inputImg').click();
+        });
+
+        document.getElementById('inputImg').addEventListener('change', function() {
+            const files = document.getElementById('inputImg').files;
+            if (files.length > 0) {
+                const file = files[0]; 
+                const fileURL = URL.createObjectURL(file);
+        
+                document.getElementById('portada').src = fileURL;
+        
+                // Guarda la URL en el objeto item
+                item.image = fileURL;
+        
+                // Limpia el input
+                document.getElementById('inputImg').value = '';
+            }
+        });
+
     newEventForm.addEventListener('submit', function(event) {
         console.log('Formulario enviado');
         // Prevent default action
@@ -24,8 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
             inputCity: document.getElementById('inputCity').value.trim(),
             inputState: document.getElementById('inputState').value,
             inputCategory: document.getElementById('inputCategory').value,
+            inputHora: document.getElementById('inputHora').value,
             inputMode: document.getElementById('inputMode').value,
-            descripcion: document.getElementById('descripcion').value.trim()
+            descripcion: document.getElementById('descripcion').value.trim(),
+            image: document.getElementById('portada').src,
         };
 
         const errores = [];
@@ -36,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('inputCityError').textContent = '';
         document.getElementById('inputStateError').textContent = '';
         document.getElementById('inputCategoryError').textContent = '';
+        document.getElementById('inputHoraError').textContent = '';
         document.getElementById('inputModeError').textContent = '';
         document.getElementById('descripcionError').textContent = '';
 
@@ -59,6 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (item.inputCategory === '' || item.inputCategory === 'Categoría') {
             errores.push('Categoría');
             document.getElementById('inputCategoryError').textContent = 'Debes seleccionar una categoría.';
+        }
+        if (item.inputCategory === '' || item.inputCategory === 'Hora') {
+            errores.push('Hora');
+            document.getElementById('inputHoraError').textContent = 'Debes agregar un horario';
         }
         if (item.inputMode === '' || item.inputMode === 'Modalidad') {
             errores.push('Modalidad');
@@ -85,12 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (index !== -1) {
                         eventos[index] = {
                             id: eventId,
-                            image: document.getElementById('portada').src,
+                            image: item.image,
                             nombre: item.nombre,
                             fecha: item.inputDate,
                             ciudad: item.inputCity,
                             estado: item.inputState,
                             categoria: item.inputCategory,
+                            hora: item.inputHora,
                             modalidad: item.inputMode,
                             descripcion: item.descripcion
                         };
@@ -100,12 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Crear nuevo evento
                     const nuevoEvento = {
                         id: Date.now().toString(), // Usar timestamp como ID único
-                        image: document.getElementById('portada').src,
+                        image: item.image,
                         nombre: item.nombre,
                         fecha: item.inputDate,
                         ciudad: item.inputCity,
                         estado: item.inputState,
                         categoria: item.inputCategory,
+                        hora: item.inputHora,
                         modalidad: item.inputMode,
                         descripcion: item.descripcion
                     };
@@ -125,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCity').value = '';
             document.getElementById('inputState').value = 'Estado'; // Reestablecer valor predeterminado
             document.getElementById('inputCategory').value = 'Categoría'; // Reestablecer valor predeterminado
+            document.getElementById('inputHora').value = '';
             document.getElementById('inputMode').value = 'Modalidad'; // Reestablecer valor predeterminado
             document.getElementById('descripcion').value = '';
         } else if (errores.length === 1) {
@@ -160,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCity').value = eventoToEdit.ciudad;
             document.getElementById('inputState').value = eventoToEdit.estado;
             document.getElementById('inputCategory').value = eventoToEdit.categoria;
+            document.getElementById('inputHora').value = eventoToEdit.hora;
             document.getElementById('inputMode').value = eventoToEdit.modalidad;
             document.getElementById('descripcion').value = eventoToEdit.descripcion;
             document.getElementById('portada').src = eventoToEdit.image;

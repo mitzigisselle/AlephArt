@@ -21,11 +21,17 @@ function createEventCard(event) {
                                 <p class="text-primary">${event.month}</p>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-outline-light me-1">
-                                    <img src="../assets/wishlist-star.png" width="20" height="20">
+                                <a href="../html/formularioEditar.html?id=${event.id}">
+                                    <button class="btn btn-outline-light edit-event-btn">
+                                        <img src="../assets/pen-field.png" width="20" height="20">
+                                    </button>
+                                </a>
+                                <button class="btn btn-outline-light delete-event-btn">
+                                    <img src="../assets/trash.png" width="20" height="20">
                                 </button>
-                                <button class="btn btn-outline-light">
-                                    <img src="../assets/calendar-plus.png" width="20" height="20">
+                                <!-- Botón de compartir -->
+                                <button class="btn btn-outline-light share-event-btn">
+                                    <img src="../assets/share.png" width="20" height="20">
                                 </button>
                             </div>
                         </div>
@@ -34,16 +40,6 @@ function createEventCard(event) {
                         <h4 class="event-title">${event.title}</h4>
                         <h6 class="event-place">${event.place}.</h6>
                         <p class="event-description flex-grow-1">${event.description}</p>
-                        <br>
-                        <a href="../html/formularioEditar.html?id=${event.id}">
-                        <button class="btn btn-outline-light edit-event-btn">
-                            <img src="../assets/pen-field.png" width="20" height="20">
-                        </button>
-                        </a>
-                        
-                        <button class="btn btn-outline-light delete-event-btn">
-                            <img src="../assets/trash.png" width="20" height="20">
-                        </button>
                     </div>
                 </div>
             </div>
@@ -64,9 +60,26 @@ function createEventCard(event) {
       }).then((result) => {
         if (result.isConfirmed) {
           card.remove(); // Elimina la tarjeta del DOM
-          deleteEvent(index); // Elimina la publicación del almacenamiento
+          deleteEvent(event.id); // Elimina la publicación del almacenamiento
         }
       }));
+
+    // Añadir evento al botón de compartir
+    const shareButton = card.querySelector('.share-event-btn');
+    shareButton.addEventListener('click', () => {
+        if ("share" in navigator) {
+            navigator.share({
+                title: "Comparte Este Evento",
+                url: window.location.href
+            })
+            .then(() => {
+                console.log("Contenido Compartido!");
+            })
+            .catch(console.error);
+        } else {
+            alert('Lo siento, este navegador no tiene soporte para recursos compartidos.');
+        }
+    });
 
     eventContainer.appendChild(card);
 }
@@ -84,22 +97,19 @@ function loadEventsFromLocalStorage() {
             day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
             month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
             title: event.nombre,
-            place: `${event.ciudad}, ${event.estado}`,
+            place: `${event.ciudad}, ${event.estado}, ${event.hora} hrs`,
             description: event.descripcion
         };
         createEventCard(eventData);
     });
-    
 }
 
 // Función para editar un evento
 function editEvent(eventId) {
     const events = JSON.parse(localStorage.getItem('eventos')) || [];
     const eventToEdit = events.find(event => event.id === eventId);
-    
+    // Aquí puedes agregar la lógica para editar el evento
 }
-
-
 
 // Función para eliminar un evento
 function deleteEvent(eventId) {
@@ -113,4 +123,3 @@ function deleteEvent(eventId) {
 
 // Cargar los eventos al cargar la página
 loadEventsFromLocalStorage();
-
