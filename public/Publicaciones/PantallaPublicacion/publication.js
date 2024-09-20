@@ -65,16 +65,14 @@ function createPublicationContainer(publication) {
   const buttonDiv = document.createElement("div");
   buttonDiv.classList.add("button-group");
 
-  const likeButton = document.createElement("button");
-  likeButton.classList.add("like-button");
-  const likeImage = document.createElement("img");
-  likeImage.src = "../../assets/iconos/sparkles.png";
-  likeImage.alt = "Like";
-  likeButton.appendChild(likeImage);
+  const iconCommentButton = document.createElement("button"); //Se cambian etiquetas por cambio de botón de likes a comentarios
+  iconCommentButton.classList.add("icon-comment-button");
+  const iconCommentImage = document.createElement("img");
+  iconCommentImage.src = "../../assets/iconos/meeting.png";
+  iconCommentImage.alt = "Comment";
+  iconCommentButton.appendChild(iconCommentImage);
 
-  const likeNumber = document.createElement("div");
-  likeNumber.classList.add("like-number");
-  likeNumber.textContent = `${publication.likes}`;
+  //Se elimina contador de likes
 
   const shareButton = document.createElement("button");
   shareButton.classList.add("share-button");
@@ -83,9 +81,7 @@ function createPublicationContainer(publication) {
   shareImage.alt = "Share";
   shareButton.appendChild(shareImage);
 
-  const shareNumber = document.createElement("div");
-  shareNumber.classList.add("share-number");
-  shareNumber.textContent = `${publication.share}`;
+ //Se elimina contador de shares
 
   const editButton = document.createElement("button");
   editButton.classList.add("edit-button");
@@ -153,7 +149,7 @@ function createPublicationContainer(publication) {
     savePublicationData(); // Actualiza el archivo JSON
   });
 
-  buttonDiv.append(shareButton, shareNumber, likeButton, likeNumber, editButton, deleteButton);
+  buttonDiv.append(shareButton, iconCommentButton, editButton, deleteButton);
 
   // Mostrar botones de edición y eliminación solo si es el usuario actual
   const currentUserUsername = "User_1";
