@@ -65,39 +65,43 @@ document
     }
     // Enviar el formulario si es válido
     if (isValid) {
+    // Verificar si el correo ya existe
+    fetch(`https://alephart.up.railway.app/api/users?email=${encodeURIComponent(email)}`) // encodeURIComponent se asegura de que los caracteres especiales en una cadena (como símbolos @) sean transformados en un formato que pueda ser transmitido a través de una URL sin causar problemas.
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al verificar usuario');
+        }
+        return response.json();
+    })
+    .then(users => {
+      const UserExists = users.some(user => user.email === email);
+
+      if (UserExists) {
+        throw new Error('El correo electrónico ya está registrado.'); // Lanza un error específico
+      } else {
         // Creamos usuario
         const newUser = {
-            nombre: nombre,
-            apellido: apellido,
-            email: email,
-            telefono: telefono,
-            contraseña: contraseña //hay que ocultarla
-        };
-        // obtenemos los usuarios existentes
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-
-        const UserExists = users.some(user => user.email === email);
-
-        if (UserExists) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'El correo electrónico ya está registrado.',
-                customClass: {
-                    container: 'my-custom-container',
-                    title: 'my-custom-title',
-                    content: 'my-custom-content',
-                    confirmButton: 'my-custom-confirm-button'
-                },
-                buttonsStyling: false
-            });
-        } else {
-            // Añadimos el nuevo usuario al arreglo
-            users.push(newUser);
-            // Guardamos los usuarios en el local storage
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Mostramos mensaje de éxito
+          first_name: nombre,
+          last_name: apellido,
+          email: email,
+          phone_number: telefono,
+          password: contraseña 
+      };
+        // Solicitud POST a la API para crear el nuevo usuario
+  return fetch('https://alephart.up.railway.app/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+      });
+    }
+})
+    .then(response => {
+      if (!response.ok) throw new Error('Error al registrarse');
+          return response.json();
+        })
+.then(data => {
             Swal.fire({
                 icon: 'success',
                 title: '¡Listo!',
@@ -112,10 +116,24 @@ document
             }).then(() => {
                 window.location.href = "/login";
             });
-        }
-    }
-  });
-
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: error.message,
+                customClass: {
+                    container: 'my-custom-container',
+                    title: 'my-custom-title',
+                    content: 'my-custom-content',
+                    confirmButton: 'my-custom-confirm-button'
+                },
+                buttonsStyling: false
+            });
+        });
+}
+});
 // Función para validar email
 function validateEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

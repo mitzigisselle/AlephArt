@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Vincula el boton agregar imagen con el input de archivo
     document.getElementById('addImgEvents').addEventListener('click', function() {
         document.getElementById('inputImg').click();
-        });
+    });
 
         document.getElementById('inputImg').addEventListener('change', function() {
             const files = this.files;
@@ -58,8 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     newEventForm.addEventListener('submit', function(event) {
-        console.log('Formulario enviado');
-        // Prevent default action
         event.preventDefault();
 
          // Obtener los valores de los inputs y actualiza item
@@ -73,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
          item.descripcion = document.getElementById('descripcion').value.trim();
 
         const errores = [];
-
+        
         // Limpiar mensajes anteriores
         document.getElementById('nombreError').textContent = '';
         document.getElementById('inputDateError').textContent = '';
@@ -118,22 +116,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('descripcionError').textContent = 'Este campo es obligatorio.';
         }
 
-        // Mostrar alertas Swal según el número de errores
         if (errores.length === 0) {
             Swal.fire({
                 icon: "success",
                 title: "¡Formulario enviado!",
                 text: "Formulario enviado correctamente. Tu evento será publicado."
             }).then(() => {
-                // Almacenar o actualizar el evento en localStorage
-                let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+                const apiUrl = 'https://alephart.up.railway.app/api/events';
 
                 if (eventId) {
                     // Editar evento existente
-                    const index = eventos.findIndex(event => event.id === eventId);
-                    if (index !== -1) {
-                        eventos[index] = {
-                            id: eventId,
+                    fetch(`${apiUrl}/${eventId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
                             image: item.image,
                             nombre: item.nombre,
                             fecha: item.inputDate,
@@ -143,42 +141,75 @@ document.addEventListener('DOMContentLoaded', () => {
                             hora: item.inputHora,
                             modalidad: item.inputMode,
                             descripcion: item.descripcion
-                        };
-                        localStorage.setItem('eventos', JSON.stringify(eventos));
-                    }
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Error en la actualización');
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Redirigir después de 2 segundos
+                        setTimeout(() => {
+                            window.location.href = '../html/eventos.html';
+                        }, 2000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "No se pudo actualizar el evento."
+                        });
+                    });
                 } else {
                     // Crear nuevo evento
-                    const nuevoEvento = {
-                        id: Date.now().toString(), // Usar timestamp como ID único
-                        image: item.image,
-                        nombre: item.nombre,
-                        fecha: item.inputDate,
-                        ciudad: item.inputCity,
-                        estado: item.inputState,
-                        categoria: item.inputCategory,
-                        hora: item.inputHora,
-                        modalidad: item.inputMode,
-                        descripcion: item.descripcion
-                    };
-                    eventos.push(nuevoEvento);
-                    localStorage.setItem('eventos', JSON.stringify(eventos));
+                    fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            image: item.image,
+                            nombre: item.nombre,
+                            fecha: item.inputDate,
+                            ciudad: item.inputCity,
+                            estado: item.inputState,
+                            categoria: item.inputCategory,
+                            hora: item.inputHora,
+                            modalidad: item.inputMode,
+                            descripcion: item.descripcion
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Error en la creación');
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Redirigir después de 2 segundos
+                        setTimeout(() => {
+                            window.location.href = '../html/eventos.html';
+                        }, 2000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "No se pudo crear el evento."
+                        });
+                    });
                 }
 
-                // Redirigir después de 2 segundos
-                setTimeout(() => {
-                    window.location.href = '../html/eventos.html'; // Página de eventos
-                }, 2000);
+                // Limpiar los campos del formulario
+                document.getElementById('nombre').value = '';
+                document.getElementById('inputDate').value = '';
+                document.getElementById('inputCity').value = '';
+                document.getElementById('inputState').value = 'Estado';
+                document.getElementById('inputCategory').value = 'Categoría';
+                document.getElementById('inputHora').value = '';
+                document.getElementById('inputMode').value = 'Modalidad';
+                document.getElementById('descripcion').value = '';
             });
-            
-            // Limpiar los campos del formulario
-            document.getElementById('nombre').value = '';
-            document.getElementById('inputDate').value = '';
-            document.getElementById('inputCity').value = '';
-            document.getElementById('inputState').value = 'Estado'; // Reestablecer valor predeterminado
-            document.getElementById('inputCategory').value = 'Categoría'; // Reestablecer valor predeterminado
-            document.getElementById('inputHora').value = '';
-            document.getElementById('inputMode').value = 'Modalidad'; // Reestablecer valor predeterminado
-            document.getElementById('descripcion').value = '';
         } else if (errores.length === 1) {
             Swal.fire({
                 icon: "error",
@@ -202,20 +233,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar datos del evento para edición si existe
     if (eventId) {
-        const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-        const eventoToEdit = eventos.find(event => event.id === eventId);
-
-        if (eventoToEdit) {
-            document.getElementById('eventId').value = eventoToEdit.id;
-            document.getElementById('nombre').value = eventoToEdit.nombre;
-            document.getElementById('inputDate').value = eventoToEdit.fecha;
-            document.getElementById('inputCity').value = eventoToEdit.ciudad;
-            document.getElementById('inputState').value = eventoToEdit.estado;
-            document.getElementById('inputCategory').value = eventoToEdit.categoria;
-            document.getElementById('inputHora').value = eventoToEdit.hora;
-            document.getElementById('inputMode').value = eventoToEdit.modalidad;
-            document.getElementById('descripcion').value = eventoToEdit.descripcion;
-            document.getElementById('portada').src = eventoToEdit.image;
-        }
+        fetch(`https://alephart.up.railway.app/api/events/${eventId}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar el evento');
+                return response.json();
+            })
+            .then(eventoToEdit => {
+                document.getElementById('eventId').value = eventoToEdit.id;
+                document.getElementById('nombre').value = eventoToEdit.nombre;
+                document.getElementById('inputDate').value = eventoToEdit.fecha;
+                document.getElementById('inputCity').value = eventoToEdit.ciudad;
+                document.getElementById('inputState').value = eventoToEdit.estado;
+                document.getElementById('inputCategory').value = eventoToEdit.categoria;
+                document.getElementById('inputHora').value = eventoToEdit.hora;
+                document.getElementById('inputMode').value = eventoToEdit.modalidad;
+                document.getElementById('descripcion').value = eventoToEdit.descripcion;
+                document.getElementById('portada').src = eventoToEdit.image;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No se pudo cargar el evento."
+                });
+            });
     }
 });
