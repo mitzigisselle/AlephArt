@@ -8,9 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    
 
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
+
+    // Inicializa item aquí
+    let item = {
+        nombre: '',
+        inputDate: '',
+        inputCity: '',
+        inputState: '',
+        inputCategory: '',
+        inputHora: '',
+        inputMode: '',
+        descripcion: '',
+        image: ''
+    };
 
     // Vincula el boton agregar imagen con el input de archivo
     document.getElementById('addImgEvents').addEventListener('click', function() {
@@ -18,38 +32,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('inputImg').addEventListener('change', function() {
-            const files = document.getElementById('inputImg').files;
+            const files = this.files;
             if (files.length > 0) {
-                const file = files[0]; 
-                const fileURL = URL.createObjectURL(file);
+                const file = files[0];
+                const reader = new FileReader();
         
-                document.getElementById('portada').src = fileURL;
+                reader.onloadend = function() {
+                    const base64data = reader.result; 
+                    document.getElementById('portada').src = base64data;
         
-                // Guarda la URL en el objeto item
-                item.image = fileURL;
+                    // Guarda la URL Base64 en el objeto item
+                    item.image = base64data;
         
-                // Limpia el input
-                document.getElementById('inputImg').value = '';
-            }
+                    // Limpia el input
+                    document.getElementById('inputImg').value = '';
+                };
+        
+                reader.readAsDataURL(file); // Lee el archivo como una URL de datos
+            }
         });
+    
+
+
+
+
 
     newEventForm.addEventListener('submit', function(event) {
         console.log('Formulario enviado');
         // Prevent default action
         event.preventDefault();
 
-        // Obtener los valores de los inputs
-        const item = {
-            nombre: document.getElementById('nombre').value.trim(),
-            inputDate: document.getElementById('inputDate').value.trim(),
-            inputCity: document.getElementById('inputCity').value.trim(),
-            inputState: document.getElementById('inputState').value,
-            inputCategory: document.getElementById('inputCategory').value,
-            inputHora: document.getElementById('inputHora').value,
-            inputMode: document.getElementById('inputMode').value,
-            descripcion: document.getElementById('descripcion').value.trim(),
-            image: document.getElementById('portada').src,
-        };
+         // Obtener los valores de los inputs y actualiza item
+         item.nombre = document.getElementById('nombre').value.trim();
+         item.inputDate = document.getElementById('inputDate').value.trim();
+         item.inputCity = document.getElementById('inputCity').value.trim();
+         item.inputState = document.getElementById('inputState').value;
+         item.inputCategory = document.getElementById('inputCategory').value;
+         item.inputHora = document.getElementById('inputHora').value;
+         item.inputMode = document.getElementById('inputMode').value;
+         item.descripcion = document.getElementById('descripcion').value.trim();
 
         const errores = [];
 
@@ -84,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errores.push('Categoría');
             document.getElementById('inputCategoryError').textContent = 'Debes seleccionar una categoría.';
         }
-        if (item.inputCategory === '' || item.inputCategory === 'Hora') {
+        if (item.inputHora === '' || item.inputCategory === 'Hora') {
             errores.push('Hora');
             document.getElementById('inputHoraError').textContent = 'Debes agregar un horario';
         }

@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del evento desde la URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -9,19 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         document.getElementById('inputImg').addEventListener('change', function() {
-            const files = document.getElementById('inputImg').files;
+            const files = this.files;
             if (files.length > 0) {
-                const file = files[0]; 
-                const fileURL = URL.createObjectURL(file);
+                const file = files[0];
+                const reader = new FileReader();
         
-                document.getElementById('portada').src = fileURL;
+                reader.onloadend = function() {
+                    const base64data = reader.result; // Aquí tienes la imagen en Base64
+                    document.getElementById('portada').src = base64data;
         
-                // Guarda la URL en el objeto item
-                item.image = fileURL;
+                    // Guarda la URL Base64 en el objeto item
+                    item.image = base64data;
         
-                // Limpia el input
-                document.getElementById('inputImg').value = '';
-            }
+                    // Limpia el input
+                    document.getElementById('inputImg').value = '';
+                };
+        
+                reader.readAsDataURL(file); // Lee el archivo como una URL de datos
+            }
         });
 
     if (eventId) {
@@ -36,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCity').value = eventToEdit.ciudad;
             document.getElementById('inputState').value = eventToEdit.estado;
             document.getElementById('inputCategory').value = eventToEdit.categoria;
-            document.getElementById('inputHora').value = eventToEdit.categoria;
+            document.getElementById('inputHora').value = eventToEdit.hora;
             document.getElementById('inputMode').value = eventToEdit.modalidad;
             document.getElementById('descripcion').value = eventToEdit.descripcion;
 
             // Actualizar la imagen si es necesario
-            document.getElementById('portada').src = '/public/Eventos/assets/audience-1867754_1280.jpg' || eventToEdit.image ; //Se cambió el orden d ela condición para mostrar la imagen predeterminada
+            document.getElementById('portada').src =  eventToEdit.image || '/public/Eventos/assets/audience-1867754_1280.jpg'; //Se cambió el orden d ela condición para mostrar la imagen predeterminada
         }
     }
 
