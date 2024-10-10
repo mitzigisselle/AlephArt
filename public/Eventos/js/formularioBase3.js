@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('inputImg').value = '';
                 };
         
-                reader.readAsDataURL(file); // Lee el archivo como una URL de datos
-            }
+                reader.readAsDataURL(file); // Lee el archivo como una URL de datos
+            }
         });
     
 
@@ -260,3 +260,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+
+
+
+
+
+
